@@ -70,12 +70,6 @@ public class MainActivity extends ActionBarActivity {
         userSongArray[1]=listDrums[0];
         userSongArray[2]=listSong[0];
 
-        /*
-        test1 = p.load(this,R.raw.drums1,1);
-        test2 = p.load(this,R.raw.drums2,1);
-        test3 = p.load(this,R.raw.drums3,1);
-        */
-
         final Button btnPlay=(Button)findViewById(R.id.button1);
         final Button btnChords=(Button)findViewById(R.id.button3);
         final Button btnDrums=(Button)findViewById(R.id.button4);
@@ -169,13 +163,6 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public int playSound(int loadedSound, int type){
-        /*
-        int[] temp = new int[playing.length+1];
-        int i=0;
-        for(int s: playing)  temp[i++]=s;
-        temp[i] = p.play(loadedSound, 1, 1, 1, 0, 1);
-        if(type!=-1) userSongArray[type] = loadedSound;
-        return temp;*/
 
         if(type!=-1) userSongArray[type] = loadedSound;
         return  p.play(loadedSound, 1, 1, 1, 0, 1);
@@ -192,9 +179,6 @@ public class MainActivity extends ActionBarActivity {
             if(type!=-1) userSongArray[type] = loadedSound;
         }
         temp[lenPlay] =  p.play(loadedSound, 1, 1, 1, loops, 1);
-        //for(int s: playing)  temp[i++]=s;
-
-        //temp[i] =
 
         return temp;
     }
@@ -222,7 +206,6 @@ public class MainActivity extends ActionBarActivity {
             playing[i] = playSound(s, -1);
         }
 
-        //for(int s: userSongArray)  playing = playLoopingSound(s,-1, 5, playing);
     }
     public void pauseSound(int playingSound){
         p.pause(playingSound);
