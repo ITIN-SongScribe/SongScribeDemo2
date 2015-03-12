@@ -38,6 +38,10 @@ public class MainActivity extends ActionBarActivity {
     int[] listBass = new int[3];
     int[] listDrums = new int [3];
     int[] listSong = new int [3];
+
+    boolean playingDrums = false;
+    boolean playingChords = false;
+
     boolean paused = false;
 
     SoundPool p;
@@ -108,37 +112,46 @@ public class MainActivity extends ActionBarActivity {
                 if(indexBass >= soundsBass.length-1)indexBass=0;
                 else indexBass++;
 
+                btnChords.setText("Bass: "+(indexBass+1));
+
                 stopAll();
                 playing = new int[1];
-                playing[0] = playSound(listBass[indexBass],2);
+                playing[0] = playSound(listBass[indexBass],1);
 
-
-            }
-        });
-
-        /*
-        btnLead.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(indexSong >= soundsSong.length-1)indexSong=0;
-                else indexSong++;
-
-                stopAll();
-
-                playing[0] = playSound(listSong[indexSong],1);
 
 
             }
         });
-*/
+
         btnDrums.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(indexDrums >= soundsDrums.length-1)indexDrums=0;
                 else indexDrums++;
 
+                btnDrums.setText("Drum: "+(indexDrums+1));
+
                 stopAll();
-                playing = new int[1];           playing[0] = playSound(listDrums[indexDrums],0);
+                playing = new int[1];
+                playing[0] = playSound(listDrums[indexDrums],0);
+
+
+
+            }
+        });
+
+        btnLead.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(indexSong >= soundsSong.length-1)indexSong=0;
+                else indexSong++;
+
+                btnLead.setText("Other: "+(indexSong+1));
+
+                stopAll();
+                playing = new int[1];
+                playing[0] = playSound(listSong[indexSong],2);
+
 
 
             }

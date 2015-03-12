@@ -21,7 +21,7 @@
     <Button
         android:layout_width="115dp"
         android:layout_height="115dp"
-        android:text="Bass"
+        android:text="Bass: 1"
         android:id="@+id/button3"
         android:layout_below="@+id/textView3"
         android:layout_alignLeft="@+id/textView"
@@ -32,7 +32,7 @@
     <Button
         android:layout_width="115dp"
         android:layout_height="115dp"
-        android:text="Drums"
+        android:text="Drum: 1"
         android:id="@+id/button4"
         android:layout_alignTop="@+id/button3"
         android:layout_alignRight="@+id/textView"
@@ -42,7 +42,7 @@
     <Button
         android:layout_width="115dp"
         android:layout_height="115dp"
-        android:text="Other"
+        android:text="Other: 1"
         android:id="@+id/button5"
         android:layout_below="@+id/button3"
         android:layout_alignLeft="@+id/button3"
