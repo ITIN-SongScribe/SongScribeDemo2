@@ -21,7 +21,7 @@
     <Button
         android:layout_width="115dp"
         android:layout_height="115dp"
-        android:text="Chords"
+        android:text="Bass"
         android:id="@+id/button3"
         android:layout_below="@+id/textView3"
         android:layout_alignLeft="@+id/textView"
@@ -42,7 +42,7 @@
     <Button
         android:layout_width="115dp"
         android:layout_height="115dp"
-        android:text="Lead"
+        android:text="Other"
         android:id="@+id/button5"
         android:layout_below="@+id/button3"
         android:layout_alignLeft="@+id/button3"

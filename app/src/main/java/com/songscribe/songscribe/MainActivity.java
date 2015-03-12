@@ -16,9 +16,10 @@ public class MainActivity extends ActionBarActivity {
     private static boolean isPlaying = false;
     private static boolean loopSong = false;
 
-    int[] soundsBass = {R.raw.guitar1, R.raw.guitar2, R.raw.guitar3};
+    int[] soundsGuitar = {R.raw.guitar1, R.raw.guitar2, R.raw.guitar3};
+    int[] soundsBass = {R.raw.bass1,R.raw.bass2,R.raw.bass_variation};
     int[] soundsDrums = {R.raw.drums1,R.raw.drums2,R.raw.drums3};
-    int[] soundsSong = {R.raw.song3, R.raw.song3, R.raw.song3};
+    int[] soundsSong = {R.raw.softgeet1, R.raw.softgeet2,R.raw.softgeet3};
 
     int[] playing = new int[1];
 
@@ -120,7 +121,8 @@ public class MainActivity extends ActionBarActivity {
 
             }
         });
-/*
+
+        /*
         btnLead.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,7 +131,7 @@ public class MainActivity extends ActionBarActivity {
 
                 stopAll();
 
-                playing = playSound(listSong[indexSong],1);
+                playing[0] = playSound(listSong[indexSong],1);
 
 
             }
