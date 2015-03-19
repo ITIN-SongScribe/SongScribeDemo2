@@ -21,6 +21,8 @@ public class MainActivity extends ActionBarActivity {
     int[] soundsDrums = {R.raw.drums1,R.raw.drums2,R.raw.drums3};
     int[] soundsSong = {R.raw.softgeet1, R.raw.softgeet2,R.raw.softgeet3};
 
+    //danny addition
+
     int[] playing = new int[1];
 
     int indexBass = 0;
