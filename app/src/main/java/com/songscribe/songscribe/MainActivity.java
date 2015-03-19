@@ -2,6 +2,7 @@ package com.songscribe.songscribe;
 
 import android.content.Context;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,6 +22,8 @@ public class MainActivity extends ActionBarActivity {
     int[] soundsDrums = {R.raw.drums1,R.raw.drums2,R.raw.drums3};
     int[] soundsSong = {R.raw.softgeet1, R.raw.softgeet2,R.raw.softgeet3};
 
+    int[][] soundsAll = {soundsDrums,soundsBass,soundsSong};
+
     int[] playing = new int[1];
 
     int indexBass = 0;
@@ -39,10 +42,13 @@ public class MainActivity extends ActionBarActivity {
     int[] listDrums = new int [3];
     int[] listSong = new int [3];
 
+
     boolean playingDrums = false;
     boolean playingChords = false;
 
     boolean paused = false;
+
+    long duration = 0;
 
     SoundPool p;
 
@@ -69,6 +75,8 @@ public class MainActivity extends ActionBarActivity {
         listSong[0] = loadSound(soundsSong[0]);
         listSong[1] = loadSound(soundsSong[1]);
         listSong[2] = loadSound(soundsSong[2]);
+
+
 
         userSongArray[0]=listBass[0];
         userSongArray[1]=listDrums[0];
@@ -116,7 +124,12 @@ public class MainActivity extends ActionBarActivity {
 
                 stopAll();
                 playing = new int[1];
-                playing[0] = playSound(listBass[indexBass],1);
+                try {
+                    playing[0] = playSound(listBass[indexBass], 1, indexBass, 0);
+                }
+                catch(InterruptedException e){
+
+                }
 
 
 
@@ -133,8 +146,11 @@ public class MainActivity extends ActionBarActivity {
 
                 stopAll();
                 playing = new int[1];
-                playing[0] = playSound(listDrums[indexDrums],0);
+                try {
+                    playing[0] = playSound(listDrums[indexDrums], 0, indexDrums, 0);
+                }catch(InterruptedException e){
 
+                }
 
 
             }
@@ -150,7 +166,12 @@ public class MainActivity extends ActionBarActivity {
 
                 stopAll();
                 playing = new int[1];
-                playing[0] = playSound(listSong[indexSong],2);
+
+                try{
+                    playing[0] = playSound(listSong[indexSong],2, indexSong,0);
+                }catch(InterruptedException e){
+
+                }
 
 
 
@@ -175,13 +196,29 @@ public class MainActivity extends ActionBarActivity {
         });
     }
 
-    public int playSound(int loadedSound, int type){
+    private long getSoundDuration(int rawId){
+        MediaPlayer player = MediaPlayer.create(this, rawId);
+        int duration = player.getDuration();
+        return duration;
+    }
 
-        if(type!=-1) userSongArray[type] = loadedSound;
+    public int playSound(int loadedSound, int type, int index, int loops) throws InterruptedException {
+
+        if(type!=-1){
+            if(index != -1){
+                if(getSoundDuration(soundsAll[type][index]) > duration) duration = getSoundDuration(soundsAll[type][index]);
+            }
+            userSongArray[type] = loadedSound;
+        }
+
+        if(loops > 0){
+            Thread.sleep(9000);
+        }
+
         return  p.play(loadedSound, 1, 1, 1, 0, 1);
     }
 
-    public int[] playLoopingSound(int loadedSound, int type, int loops, int[] pl){
+    /*public int[] playLoopingSound(int loadedSound, int type, int loops, int[] pl){
 
         int lenPlay = pl.length;
         int[] temp = new int[lenPlay+1];
@@ -194,7 +231,7 @@ public class MainActivity extends ActionBarActivity {
         temp[lenPlay] =  p.play(loadedSound, 1, 1, 1, loops, 1);
 
         return temp;
-    }
+    }*/
 
     public int loadSound(int rawSound){
         return p.load(this,rawSound,1);
@@ -214,9 +251,16 @@ public class MainActivity extends ActionBarActivity {
     public void playUserSong(){
         playing = new int[3];
         int i = -1;
+        int loops = 0;
         for(int s: userSongArray){
+
             i++;
-            playing[i] = playSound(s, -1);
+            if(i >= userSongArray.length-1) loops = 4;
+            try{
+                playing[i] = playSound(s, -1, -1, loops);
+            }catch(InterruptedException e){
+
+            }
         }
 
     }
