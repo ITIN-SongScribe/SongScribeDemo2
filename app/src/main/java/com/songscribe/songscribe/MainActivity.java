@@ -12,6 +12,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 
 public class MainActivity extends ActionBarActivity {
     private static boolean isPlaying = false;
@@ -87,6 +93,12 @@ public class MainActivity extends ActionBarActivity {
         final Button btnDrums=(Button)findViewById(R.id.button4);
         final Button btnLead=(Button)findViewById(R.id.button5);
         final Button btnStop=(Button)findViewById(R.id.button2);
+
+        final Button save = (Button)findViewById(R.id.SAVE);
+
+        final TextView tvArtist = (TextView)findViewById(R.id.textView2);
+        final TextView tvSong = (TextView)findViewById(R.id.textView3);
+
         final TextView txtArtist = (TextView)findViewById(R.id.textView2);
         txtArtist.setText(SongSelection.getArtist());
 
@@ -191,6 +203,30 @@ public class MainActivity extends ActionBarActivity {
 
                 stopAll();
 
+            }
+
+        });
+
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isPlaying = false;
+
+                paused = false;
+
+                btnPlay.setText("Play");
+
+                loopSong = false;
+
+                stopAll();
+
+                String nameSong = tvSong.getText().toString();
+                String nameArtist = tvArtist.getText().toString();
+
+                String saveData = nameSong+","+nameArtist+","+indexBass+","+indexDrums+","+indexSong+"|";
+                saveData+=SongFile.load(getBaseContext());
+                SongFile.save(getBaseContext(), saveData);
+                SongFile.load(getBaseContext());
             }
 
         });

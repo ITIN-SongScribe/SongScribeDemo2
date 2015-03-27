@@ -51,8 +51,8 @@
     <Button
         android:layout_width="115dp"
         android:layout_height="115dp"
-        android:text="Lyrics"
-        android:id="@+id/button6"
+        android:text="Save"
+        android:id="@+id/SAVE"
         android:layout_alignTop="@+id/button5"
         android:layout_alignLeft="@+id/button4"
         android:layout_alignStart="@+id/button4" />
