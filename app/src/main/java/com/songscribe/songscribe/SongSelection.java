@@ -8,11 +8,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 
 public class SongSelection extends ActionBarActivity {
 
     private static String artist = "Artist";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +28,7 @@ public class SongSelection extends ActionBarActivity {
 
         Button nsong = (Button) findViewById(R.id.nsong);
         final EditText user = (EditText) findViewById(R.id.editText);
+        final TextView load = (TextView)findViewById(R.id.LOAD);
 
         nsong.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,6 +38,15 @@ public class SongSelection extends ActionBarActivity {
 
                 Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        load.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                SongFile.load(getBaseContext());
+
             }
         });
      }
