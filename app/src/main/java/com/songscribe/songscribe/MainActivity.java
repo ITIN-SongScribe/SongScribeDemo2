@@ -12,12 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
 
 public class MainActivity extends ActionBarActivity {
     private static boolean isPlaying = false;
@@ -100,7 +94,7 @@ public class MainActivity extends ActionBarActivity {
         final TextView tvSong = (TextView)findViewById(R.id.textView3);
 
         final TextView txtArtist = (TextView)findViewById(R.id.textView2);
-        txtArtist.setText(SongSelection.getArtist());
+        txtArtist.setText(LoginScreen.getArtist());
 
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
