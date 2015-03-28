@@ -7,82 +7,96 @@
     android:theme="@style/AppTheme"
     android:id="@+id/main_activity">
 
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="54dp"
-        android:text="SongScribe"
-        android:id="@+id/textView"
-        android:layout_marginTop="22dp"
+        android:id="@+id/artist"
+        android:textSize="20sp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/imageButton"/>
 
-    <Button
-        android:layout_width="115dp"
-        android:layout_height="115dp"
-        android:text="Bass: 1"
-        android:id="@+id/button3"
-        android:layout_below="@+id/textView3"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView"
-        android:layout_marginTop="36dp"
-        android:layout_marginLeft="15dp"/>
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/imageButton"
+        android:src="@drawable/samprofile"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
-    <Button
-        android:layout_width="115dp"
-        android:layout_height="115dp"
-        android:text="Drum: 1"
-        android:id="@+id/button4"
-        android:layout_alignTop="@+id/button3"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView"
-        android:layout_marginRight="15dp"/>
-
-    <Button
-        android:layout_width="115dp"
-        android:layout_height="115dp"
-        android:text="Other: 1"
-        android:id="@+id/button5"
-        android:layout_below="@+id/button3"
-        android:layout_alignLeft="@+id/button3"
-        android:layout_alignStart="@+id/button3" />
-
-    <Button
-        android:layout_width="115dp"
-        android:layout_height="115dp"
-        android:text="Save"
-        android:id="@+id/SAVE"
-        android:layout_alignTop="@+id/button5"
-        android:layout_alignLeft="@+id/button4"
-        android:layout_alignStart="@+id/button4" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:id="@+id/imageView2"
+        android:src="@drawable/sslogoab"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="-40dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="&quot;Artist Name&quot;"
-        android:id="@+id/textView2"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true" />
+        android:text="@+id/txtsongName"
+        android:id="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="175dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="&quot;Song Name&quot;"
-        android:id="@+id/textView3"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true" />
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="Bass: 1"
+        android:id="@+id/button3"
+        android:layout_marginRight="22dp"
+        android:layout_marginEnd="22dp"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/button4"
+        android:layout_toStartOf="@+id/button4" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="Drum: 1"
+        android:id="@+id/button4"
+        android:layout_alignTop="@+id/button3"
+        android:layout_toLeftOf="@+id/imageButton"
+        android:layout_toStartOf="@+id/imageButton"
+        android:layout_marginRight="30dp"
+        android:layout_marginEnd="30dp" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="Chord: 1"
+        android:id="@+id/button5"
+        android:layout_below="@+id/button3"
+        android:layout_alignLeft="@+id/button3"
+        android:layout_alignStart="@+id/button3"
+        android:layout_marginTop="28dp" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="Save"
+        android:id="@+id/SAVE"
+        android:layout_alignBaseline="@+id/button5"
+        android:layout_alignBottom="@+id/button5"
+        android:layout_alignLeft="@+id/button4"
+        android:layout_alignStart="@+id/button4" />
+
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Play"
         android:id="@+id/button1"
-        android:layout_alignTop="@+id/button2"
-        android:layout_alignRight="@+id/button5"
-        android:layout_alignEnd="@+id/button5" />
+        android:layout_alignBaseline="@+id/button2"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_alignLeft="@+id/SAVE"
+        android:layout_alignStart="@+id/SAVE" />
 
     <Button
         android:layout_width="wrap_content"
@@ -90,9 +104,12 @@
         android:text="Stop"
         android:id="@+id/button2"
         android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/button6"
-        android:layout_alignStart="@+id/button6"
-        android:layout_marginBottom="41dp" />
+        android:layout_alignRight="@+id/button5"
+        android:layout_alignEnd="@+id/button5"
+        android:layout_marginBottom="19dp" />
+
+
+
 
 
 </RelativeLayout>

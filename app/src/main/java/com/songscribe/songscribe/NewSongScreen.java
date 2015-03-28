@@ -8,48 +8,48 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 
-public class LoginScreen extends ActionBarActivity {
+public class NewSongScreen extends ActionBarActivity {
 
-    // EditText mEdit;
-    // TextView mText;
 
-    private static String artist = "Artist";
+    private static String songname = "Song Name";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_screen);
+        setContentView(R.layout.activity_new_song_screen);
 
-        Button login = (Button) findViewById(R.id.userLogin);
-        final EditText user = (EditText) findViewById(R.id.userName);
+        Button start = (Button) findViewById(R.id.songStart);
+        final TextView txtArtist = (TextView)findViewById(R.id.artist);
+        txtArtist.setText(LoginScreen.getArtist());
+        
+        final EditText sName = (EditText) findViewById(R.id.songName);
 
-        login.setOnClickListener(new View.OnClickListener() {
+        start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                // mText = (TextView)findViewById(R.id.welcome);
-                // mText.setText("Welcome "+mEdit.getText().toString()+"!");
 
-                artist = user.getText().toString();
+                songname = sName.getText().toString();
 
-                Intent intent = new Intent(getApplicationContext(), SongSelection.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
         });
     }
 
-    public static String getArtist(){
+    public static String getSongName(){
 
-        return artist;
+        return songname;
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_login_screen, menu);
+        getMenuInflater().inflate(R.menu.menu_new_song_screen, menu);
         return true;
     }
 

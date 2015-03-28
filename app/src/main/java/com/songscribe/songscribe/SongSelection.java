@@ -18,13 +18,15 @@ public class SongSelection extends ActionBarActivity {
         setContentView(R.layout.activity_song_selection);
 
         Button nsong = (Button) findViewById(R.id.nsong);
-        final TextView load = (TextView)findViewById(R.id.LOAD);
+        final TextView load = (TextView)findViewById(R.id.Album);
+        final TextView txtArtist = (TextView)findViewById(R.id.artist);
+        txtArtist.setText(LoginScreen.getArtist());
 
         nsong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(),NewSongScreen.class);
                 startActivity(intent);
             }
         });

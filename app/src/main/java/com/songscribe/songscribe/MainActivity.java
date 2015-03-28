@@ -90,11 +90,13 @@ public class MainActivity extends ActionBarActivity {
 
         final Button save = (Button)findViewById(R.id.SAVE);
 
-        final TextView tvArtist = (TextView)findViewById(R.id.textView2);
-        final TextView tvSong = (TextView)findViewById(R.id.textView3);
+        final TextView tvArtist = (TextView)findViewById(R.id.artist);
+        final TextView tvSong = (TextView)findViewById(R.id.textView);
 
-        final TextView txtArtist = (TextView)findViewById(R.id.textView2);
+        final TextView txtArtist = (TextView)findViewById(R.id.artist);
         txtArtist.setText(LoginScreen.getArtist());
+        final TextView txtSongName = (TextView)findViewById(R.id.textView);
+        txtSongName.setText(NewSongScreen.getSongName());
 
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -168,7 +170,7 @@ public class MainActivity extends ActionBarActivity {
                 if(indexSong >= soundsSong.length-1)indexSong=0;
                 else indexSong++;
 
-                btnLead.setText("Other: "+(indexSong+1));
+                btnLead.setText("Chord: "+(indexSong+1));
 
                 stopAll();
                 playing = new int[1];

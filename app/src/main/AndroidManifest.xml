@@ -13,6 +13,10 @@
             android:label="SongScribe" >
         </activity>
         <activity
+            android:name=".NewSongScreen"
+            android:label="SongScribe" >
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
         </activity>
