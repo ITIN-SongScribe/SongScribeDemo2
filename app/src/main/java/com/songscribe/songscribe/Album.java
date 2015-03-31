@@ -1,6 +1,5 @@
 package com.songscribe.songscribe;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -10,43 +9,38 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
-public class SongSelection extends ActionBarActivity {
+public class Album extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_song_selection);
+        setContentView(R.layout.activity_album);
 
-        Button nsong = (Button) findViewById(R.id.nsong);
-        final TextView load = (TextView)findViewById(R.id.Album);
-        final TextView txtArtist = (TextView)findViewById(R.id.artist);
+        Button song1 = (Button) findViewById(R.id.button3);
+
+        final TextView txtArtist = (TextView)findViewById(R.id.artistname);
         txtArtist.setText(LoginScreen.getArtist());
+        final TextView txtSongName = (TextView)findViewById(R.id.button3);
+        txtSongName.setText(NewSongScreen.getSongName());
+        // final String txtAlbumArtist = txtArtist + "'s Album!";
 
-        nsong.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                Intent intent = new Intent(getApplicationContext(),NewSongScreen.class);
-                startActivity(intent);
-            }
-        });
+          song1.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View view) {
 
-        load.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                  SongFile.load(getBaseContext());
 
-                Intent intent = new Intent(getApplicationContext(),Album.class);
-                startActivity(intent);
 
-            }
-        });
-     }
+              }
+          });
+    }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_song_selection, menu);
+        getMenuInflater().inflate(R.menu.menu_album, menu);
         return true;
     }
 
