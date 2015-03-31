@@ -3,9 +3,8 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
-    android:theme="@style/AppTheme"
-    android:id="@+id/main_activity">
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.songscribe.songscribe.SongSelection">
 
     <TextView
         android:layout_width="wrap_content"
@@ -40,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="&#34;@+id/txtsongName&#34;"
+        android:text="Song Selection"
         android:id="@+id/textView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="175dp" />
@@ -48,20 +47,20 @@
     <Button
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:text="Bass: 1"
-        android:id="@+id/button3"
+        android:text="New Song"
+        android:id="@+id/nsong"
         android:layout_marginRight="22dp"
         android:layout_marginEnd="22dp"
         android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/button4"
-        android:layout_toStartOf="@+id/button4" />
+        android:layout_toLeftOf="@+id/Resume"
+        android:layout_toStartOf="@+id/Resume" />
 
     <Button
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:text="Drum: 1"
-        android:id="@+id/button4"
-        android:layout_alignTop="@+id/button3"
+        android:text="Resume Song"
+        android:id="@+id/Resume"
+        android:layout_alignTop="@+id/nsong"
         android:layout_toLeftOf="@+id/imageButton"
         android:layout_toStartOf="@+id/imageButton"
         android:layout_marginRight="30dp"
@@ -70,45 +69,22 @@
     <Button
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:text="Chord: 1"
-        android:id="@+id/button5"
-        android:layout_below="@+id/button3"
-        android:layout_alignLeft="@+id/button3"
-        android:layout_alignStart="@+id/button3"
+        android:text="Your Album"
+        android:id="@+id/Album"
+        android:layout_below="@+id/nsong"
+        android:layout_alignLeft="@+id/nsong"
+        android:layout_alignStart="@+id/nsong"
         android:layout_marginTop="28dp" />
 
     <Button
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:text="Save"
-        android:id="@+id/SAVE"
-        android:layout_alignBaseline="@+id/button5"
-        android:layout_alignBottom="@+id/button5"
-        android:layout_alignLeft="@+id/button4"
-        android:layout_alignStart="@+id/button4" />
-
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Play"
-        android:id="@+id/button1"
-        android:layout_alignBaseline="@+id/button2"
-        android:layout_alignBottom="@+id/button2"
-        android:layout_alignLeft="@+id/SAVE"
-        android:layout_alignStart="@+id/SAVE" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Stop"
-        android:id="@+id/button2"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/button5"
-        android:layout_alignEnd="@+id/button5"
-        android:layout_marginBottom="19dp" />
-
-
+        android:text="Browse Artists"
+        android:id="@+id/Browse"
+        android:layout_alignBaseline="@+id/Album"
+        android:layout_alignBottom="@+id/Album"
+        android:layout_alignLeft="@+id/Resume"
+        android:layout_alignStart="@+id/Resume" />
 
 
 
