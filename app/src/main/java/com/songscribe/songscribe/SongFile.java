@@ -52,7 +52,7 @@ public class SongFile {
                     finalData+=read_data;
                     data = new char[data_block];
                 }
-                Toast.makeText(c, "Song Data: " + finalData, Toast.LENGTH_LONG).show();
+                //Toast.makeText(c, "Song Data:", Toast.LENGTH_LONG).show();
                 loaded = finalData;
             } catch (IOException e) {
                 e.printStackTrace();
@@ -63,4 +63,16 @@ public class SongFile {
         }
         return loaded;
     }
+
+    public static String[] loadBuyNameAndArtist(Context c, String name, String artist){
+        String[] allSongs = load(c).split("|", -1);
+
+        for(int i = 0; i < allSongs.length; i++){
+            String[] oneSong = allSongs[i].split(",",-1);
+            if(name.equalsIgnoreCase(oneSong[0]) && artist.equalsIgnoreCase(oneSong[1])) return oneSong;
+        }
+        return new String[]{"Default", "Dev","1","1","1"};
+    }
+
+
 }

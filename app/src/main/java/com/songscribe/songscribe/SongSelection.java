@@ -18,7 +18,7 @@ public class SongSelection extends ActionBarActivity {
         setContentView(R.layout.activity_song_selection);
 
         Button nsong = (Button) findViewById(R.id.nsong);
-        final TextView load = (TextView)findViewById(R.id.Album);
+        final TextView load = (TextView)findViewById(R.id.LOAD);
         final TextView txtArtist = (TextView)findViewById(R.id.artist);
         txtArtist.setText(LoginScreen.getArtist());
 
