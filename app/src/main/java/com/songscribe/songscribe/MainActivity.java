@@ -1,6 +1,7 @@
 package com.songscribe.songscribe;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
@@ -18,9 +19,9 @@ public class MainActivity extends ActionBarActivity {
     private static boolean loopSong = false;
 
     int[] soundsGuitar = {R.raw.guitar1, R.raw.guitar2, R.raw.guitar3};
-    int[] soundsBass = {R.raw.bass1,R.raw.bass2,R.raw.bass_variation};
-    int[] soundsDrums = {R.raw.drums1,R.raw.drums2,R.raw.drums3};
-    int[] soundsSong = {R.raw.softgeet1, R.raw.softgeet2,R.raw.softgeet3};
+    static int[] soundsBass = {R.raw.bass1,R.raw.bass2,R.raw.bass_variation};
+    static int[] soundsDrums = {R.raw.drums1,R.raw.drums2,R.raw.drums3};
+    static int[] soundsSong = {R.raw.softgeet1, R.raw.softgeet2,R.raw.softgeet3};
 
     int[][] soundsAll = {soundsDrums,soundsBass,soundsSong};
 
@@ -30,40 +31,35 @@ public class MainActivity extends ActionBarActivity {
     int indexDrums = 0;
     int indexSong = 0;
 
+    static String nameArtist, nameSong;
+
     int idBass = -1;
     int idDrums = -1;
     int idSong = -1;
 
     int test1,test2,test3;
 
-    int[] userSongArray = new int[3];
+    static int[] userSongArray = new int[3];
 
-    int[] listBass = new int[3];
-    int[] listDrums = new int [3];
-    int[] listSong = new int [3];
+    static int[] listBass = new int[3];
+    static int[] listDrums = new int [3];
+    static int[] listSong = new int [3];
 
+    static int setbass;
+    static int setdrums;
+    static int setsong;
 
     boolean playingDrums = false;
     boolean playingChords = false;
 
     boolean paused = false;
 
+    static boolean init = false;
     long duration = 0;
 
     SoundPool p;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        final Context test = this;
-
-        System.out.println(playing.length);
-        //sm = new SoundManager(this, 1);
-        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) p = new SoundPool.Builder().setMaxStreams(10).build();
-        else p = new SoundPool(10, AudioManager.STREAM_MUSIC, 1);
-
+    private void preInit(){
         listBass[0] = loadSound(soundsBass[0]);
         listBass[1] = loadSound(soundsBass[1]);
         listBass[2] = loadSound(soundsBass[2]);
@@ -75,14 +71,35 @@ public class MainActivity extends ActionBarActivity {
         listSong[0] = loadSound(soundsSong[0]);
         listSong[1] = loadSound(soundsSong[1]);
         listSong[2] = loadSound(soundsSong[2]);
+    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
 
+        System.out.println(playing.length);
+        //sm = new SoundManager(this, 1);
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) p = new SoundPool.Builder().setMaxStreams(10).build();
+        else p = new SoundPool(10, AudioManager.STREAM_MUSIC, 1);
 
-        userSongArray[0]=listBass[0];
-        userSongArray[1]=listDrums[0];
-        userSongArray[2]=listSong[0];
 
-        final Button btnPlay=(Button)findViewById(R.id.button1);
+        preInit();
+        if(!init){
+
+            setbass=listBass[0];
+            setdrums=listDrums[0];
+            setsong=listSong[0];
+            nameArtist = LoginScreen.getArtist();
+            nameSong = NewSongScreen.getSongName();
+        }
+
+
+        userSongArray[0]=listBass[setbass];
+        userSongArray[1]=listDrums[setdrums];
+        userSongArray[2]=listSong[setsong];
+
+        final Button btnPlay=(Button)findViewById(R.id.PLAY);
         final Button btnChords=(Button)findViewById(R.id.button3);
         final Button btnDrums=(Button)findViewById(R.id.button4);
         final Button btnLead=(Button)findViewById(R.id.button5);
@@ -93,10 +110,15 @@ public class MainActivity extends ActionBarActivity {
         final TextView tvArtist = (TextView)findViewById(R.id.artist);
         final TextView tvSong = (TextView)findViewById(R.id.textView);
 
+
+
+
         final TextView txtArtist = (TextView)findViewById(R.id.artist);
-        txtArtist.setText(LoginScreen.getArtist());
+        txtArtist.setText(nameArtist);
         final TextView txtSongName = (TextView)findViewById(R.id.textView);
-        txtSongName.setText(NewSongScreen.getSongName());
+        txtSongName.setText(nameSong);
+
+
 
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -222,7 +244,10 @@ public class MainActivity extends ActionBarActivity {
                 String saveData = nameSong+","+nameArtist+","+indexBass+","+indexDrums+","+indexSong+"|";
                 saveData+=SongFile.load(getBaseContext());
                 SongFile.save(getBaseContext(), saveData);
-                SongFile.load(getBaseContext());
+
+                Intent intent = new Intent(getApplicationContext(), SongSelection.class);
+                startActivity(intent);
+
             }
 
         });
@@ -232,6 +257,29 @@ public class MainActivity extends ActionBarActivity {
         MediaPlayer player = MediaPlayer.create(this, rawId);
         int duration = player.getDuration();
         return duration;
+    }
+
+    public static void setNameArtist(String name){
+        nameArtist = name;
+    }
+    public static void setNameSong(String name){
+        nameSong = name;
+    }
+    public static void setSongStuff(String[] s){
+        init = true;
+
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Bass: "+s[2]);
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Drums: "+s[3]);
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Song: "+s[4]);
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Artist: "+s[1]);
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Song Name:"+s[0]);
+        setbass = Integer.parseInt(s[2]);
+        setdrums = Integer.parseInt(s[3]);
+        setsong = Integer.parseInt(s[4]);
+        setNameSong(s[0]);
+        setNameArtist(s[1]);
+
+
     }
 
     public int playSound(int loadedSound, int type, int index, int loops) throws InterruptedException {
@@ -287,9 +335,9 @@ public class MainActivity extends ActionBarActivity {
         for(int s: userSongArray){
 
             i++;
-            if(i >= userSongArray.length-1) loops = 4;
+            //if(i >= userSongArray.length-1) loops = 0;
             try{
-                playing[i] = playSound(s, -1, -1, loops);
+                playing[i] = playSound(s, -1, -1, 0);
             }catch(InterruptedException e){
 
             }

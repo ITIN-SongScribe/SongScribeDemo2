@@ -15,32 +15,40 @@ import java.io.OutputStreamWriter;
  */
 public class SongFile {
 
+    private static String file = "Sprint3.txt";
     static int data_block = 100;
+    private static int numSongs = 0;
+    private static final int SONG_INFO = 5;
+    private static final int MAX_SONGS = 4;
 
     public static void save(Context c, String saveData){
-        try {
-            FileOutputStream saveFile =c.getApplicationContext(). openFileOutput("savedSongs.txt", c.getApplicationContext().MODE_WORLD_READABLE);
-
-            OutputStreamWriter osw = new OutputStreamWriter(saveFile);
-
+        if(isFull()){
+            Toast.makeText(c,"You already have "+numSongs+" songs",Toast.LENGTH_LONG).show();
+        }else {
             try {
-                osw.write(saveData);
-                osw.flush();
-                osw.close();
-                Toast.makeText(c,"Save Complete",Toast.LENGTH_LONG).show();
-            } catch (IOException e) {
+                FileOutputStream saveFile = c.getApplicationContext().openFileOutput(file, c.getApplicationContext().MODE_WORLD_READABLE);
+
+                OutputStreamWriter osw = new OutputStreamWriter(saveFile);
+
+                try {
+                    osw.write(saveData);
+                    osw.flush();
+                    osw.close();
+                    Toast.makeText(c, "Save Complete", Toast.LENGTH_LONG).show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         }
     }
 
     public static String load(Context c){
         String loaded = "";
         try {
-            FileInputStream loadData = c.getApplicationContext().openFileInput("savedSongs.txt");
+            FileInputStream loadData = c.getApplicationContext().openFileInput(file);
             InputStreamReader isr = new InputStreamReader(loadData);
             char[] data = new char[data_block];
             String finalData = "";
@@ -52,7 +60,7 @@ public class SongFile {
                     finalData+=read_data;
                     data = new char[data_block];
                 }
-                //Toast.makeText(c, "Song Data:", Toast.LENGTH_LONG).show();
+
                 loaded = finalData;
             } catch (IOException e) {
                 e.printStackTrace();
@@ -61,17 +69,54 @@ public class SongFile {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        numSongs = (loaded.split("\\|",MAX_SONGS).length)-1;
+
         return loaded;
     }
 
     public static String[] loadBuyNameAndArtist(Context c, String name, String artist){
-        String[] allSongs = load(c).split("|", -1);
+        String[] allSongs = load(c).split("\\|",MAX_SONGS);
+        String s="";
+        for(int i = 0; i < 4; i++){
+            if(allSongs[i]!=null)s+="+"+allSongs[i]+"+";
+            else s+="+Empty+";
+        }
 
-        for(int i = 0; i < allSongs.length; i++){
-            String[] oneSong = allSongs[i].split(",",-1);
+        for(int i = 0; i < 4; i++){
+            String[] oneSong = allSongs[i].split(",",SONG_INFO);
             if(name.equalsIgnoreCase(oneSong[0]) && artist.equalsIgnoreCase(oneSong[1])) return oneSong;
         }
         return new String[]{"Default", "Dev","1","1","1"};
+    }
+
+    public static String[] loadBuyIndex(Context c, int index){
+        String[] allSongs = load(c).split("\\|",MAX_SONGS);
+        String[] oneSong = allSongs[index].split(",",SONG_INFO);
+
+        return oneSong;
+    }
+
+    public static String loadName(Context c, int i){
+        String[] allSongs = load(c).split("\\|",MAX_SONGS);
+
+        if(i >= (allSongs.length-1)) return "New Song";
+
+        String[] oneSong = allSongs[i].split(",",SONG_INFO);
+
+
+
+        return oneSong[0]+"-"+oneSong[1];
+
+
+    }
+
+    private static boolean isFull(){
+        if(numSongs >= 4){
+            //numSongs = 4;
+            return true;
+        }
+
+        return false;
     }
 
 

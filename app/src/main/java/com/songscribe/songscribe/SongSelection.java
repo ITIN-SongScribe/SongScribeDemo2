@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class SongSelection extends ActionBarActivity {
@@ -19,7 +20,7 @@ public class SongSelection extends ActionBarActivity {
 
         Button nsong = (Button) findViewById(R.id.nsong);
         final TextView load = (TextView)findViewById(R.id.LOAD);
-        final TextView txtArtist = (TextView)findViewById(R.id.artist);
+        final TextView txtArtist = (TextView)findViewById(R.id.editText);
         txtArtist.setText(LoginScreen.getArtist());
 
         nsong.setOnClickListener(new View.OnClickListener() {
