@@ -15,6 +15,7 @@ import java.io.OutputStreamWriter;
  */
 public class SongFile {
 
+    private static String file = "Sprint30.txt";
     static int data_block = 100;
     private static int numSongs = 0;
     private static final int SONG_INFO = 5;
