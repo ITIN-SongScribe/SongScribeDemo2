@@ -243,8 +243,8 @@ public class MainActivity extends ActionBarActivity {
                 String testArtist = LoginScreen.getArtist();
 
                 String saveData = nameSong+","+testArtist+","+indexBass+","+indexDrums+","+indexSong+"|";
-                saveData+=SongFile.load(getBaseContext());
-                SongFile.save(getBaseContext(), saveData);
+                saveData+=SongFile.load(getBaseContext(),testArtist);
+                SongFile.save(getBaseContext(), saveData, testArtist);
 
                 Intent intent = new Intent(getApplicationContext(), SongSelection.class);
                 startActivity(intent);

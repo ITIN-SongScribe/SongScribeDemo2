@@ -20,7 +20,7 @@ public class SongSelection extends ActionBarActivity {
 
         Button nsong = (Button) findViewById(R.id.nsong);
         final TextView load = (TextView)findViewById(R.id.LOAD);
-        final TextView txtArtist = (TextView)findViewById(R.id.editText);
+        final TextView txtArtist = (TextView)findViewById(R.id.artist);
         txtArtist.setText(nameArtist);
 
         nsong.setOnClickListener(new View.OnClickListener() {

@@ -15,18 +15,20 @@ import java.io.OutputStreamWriter;
  */
 public class SongFile {
 
-    private static String file = "Sprint30.txt";
+    private static String baseFile = "Sprint3Final.txt";
+    private static String theFile = "Sprint3Final.txt";
     static int data_block = 100;
     private static int numSongs = 0;
     private static final int SONG_INFO = 5;
     private static final int MAX_SONGS = 4;
 
-    public static void save(Context c, String saveData){
+    public static void save(Context c, String saveData, String curArt){
+        theFile = curArt+baseFile;
         if(isFull()){
             Toast.makeText(c,"You already have "+numSongs+" songs",Toast.LENGTH_LONG).show();
         }else {
             try {
-                FileOutputStream saveFile = c.getApplicationContext().openFileOutput(file, c.getApplicationContext().MODE_WORLD_READABLE);
+                FileOutputStream saveFile = c.getApplicationContext().openFileOutput(theFile, c.getApplicationContext().MODE_WORLD_READABLE);
 
                 OutputStreamWriter osw = new OutputStreamWriter(saveFile);
 
@@ -45,10 +47,11 @@ public class SongFile {
         }
     }
 
-    public static String load(Context c){
+    public static String load(Context c, String curArt){
+        theFile = curArt+baseFile;
         String loaded = "";
         try {
-            FileInputStream loadData = c.getApplicationContext().openFileInput(file);
+            FileInputStream loadData = c.getApplicationContext().openFileInput(theFile);
             InputStreamReader isr = new InputStreamReader(loadData);
             char[] data = new char[data_block];
             String finalData = "";
@@ -75,7 +78,7 @@ public class SongFile {
     }
 
     public static String[] loadBuyNameAndArtist(Context c, String name, String artist){
-        String[] allSongs = load(c).split("\\|",MAX_SONGS);
+        String[] allSongs = load(c,artist).split("\\|",MAX_SONGS);
         String s="";
         for(int i = 0; i < 4; i++){
             if(allSongs[i]!=null)s+="+"+allSongs[i]+"+";
@@ -89,15 +92,15 @@ public class SongFile {
         return new String[]{"Default", "Dev","1","1","1"};
     }
 
-    public static String[] loadBuyIndex(Context c, int index){
-        String[] allSongs = load(c).split("\\|",MAX_SONGS);
+    public static String[] loadBuyIndex(Context c, int index, String curArt){
+        String[] allSongs = load(c,curArt).split("\\|",MAX_SONGS);
         String[] oneSong = allSongs[index].split(",",SONG_INFO);
 
         return oneSong;
     }
 
-    public static String loadName(Context c, int i){
-        String[] allSongs = load(c).split("\\|",MAX_SONGS);
+    public static String loadName(Context c, int i, String curArt){
+        String[] allSongs = load(c,curArt).split("\\|",MAX_SONGS);
 
         if(i >= (allSongs.length-1)) return "New Song";
 

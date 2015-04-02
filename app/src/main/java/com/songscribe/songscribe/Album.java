@@ -47,7 +47,7 @@ public class Album extends ActionBarActivity {
                 }else{
                     //String[] s = song1.getText().toString().split("-");
                     //MainActivity.setSongStuff(SongFile.loadBuyNameAndArtist(getBaseContext(), s[0], s[1]));
-                    MainActivity.setSongStuff(SongFile.loadBuyIndex(getBaseContext(),0));
+                    MainActivity.setSongStuff(SongFile.loadBuyIndex(getBaseContext(),0,nameArtist));
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                 }
@@ -62,7 +62,7 @@ public class Album extends ActionBarActivity {
                 }else{
                     //String[] s = song2.getText().toString().split("-");
                     //MainActivity.setSongStuff(SongFile.loadBuyNameAndArtist(getBaseContext(),s[0],s[1]));
-                    MainActivity.setSongStuff(SongFile.loadBuyIndex(getBaseContext(),1));
+                    MainActivity.setSongStuff(SongFile.loadBuyIndex(getBaseContext(),1,nameArtist));
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                 }
@@ -77,7 +77,7 @@ public class Album extends ActionBarActivity {
                 }else{
                     //String[] s = song3.getText().toString().split("-");
                     //MainActivity.setSongStuff(SongFile.loadBuyNameAndArtist(getBaseContext(),s[0],s[1]));
-                    MainActivity.setSongStuff(SongFile.loadBuyIndex(getBaseContext(),2));
+                    MainActivity.setSongStuff(SongFile.loadBuyIndex(getBaseContext(),2,nameArtist));
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                 }
@@ -92,7 +92,7 @@ public class Album extends ActionBarActivity {
                 }else{
                     //String[] s = song4.getText().toString().split("-");
                     //MainActivity.setSongStuff(SongFile.loadBuyNameAndArtist(getBaseContext(),s[0],s[1]));
-                    MainActivity.setSongStuff(SongFile.loadBuyIndex(getBaseContext(),3));
+                    MainActivity.setSongStuff(SongFile.loadBuyIndex(getBaseContext(),3,nameArtist));
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                 }
@@ -102,10 +102,10 @@ public class Album extends ActionBarActivity {
     private void setUp(){
         System.out.println("Setup Start");
         int i = 0;
-        song1.setText(SongFile.loadName(getBaseContext(),i++).toString());
-        song2.setText(SongFile.loadName(getBaseContext(),i++).toString());
-        song3.setText(SongFile.loadName(getBaseContext(),i++).toString());
-        song4.setText(SongFile.loadName(getBaseContext(),i++).toString());
+        song1.setText(SongFile.loadName(getBaseContext(),i++,nameArtist).toString());
+        song2.setText(SongFile.loadName(getBaseContext(),i++,nameArtist).toString());
+        song3.setText(SongFile.loadName(getBaseContext(),i++,nameArtist).toString());
+        song4.setText(SongFile.loadName(getBaseContext(),i++,nameArtist).toString());
         System.out.println("Setup End");
     }
 
