@@ -87,9 +87,9 @@ public class MainActivity extends ActionBarActivity {
         preInit();
         if(!init){
 
-            setbass=listBass[0];
-            setdrums=listDrums[0];
-            setsong=listSong[0];
+            setbass=0;
+            setdrums=0;
+            setsong=0;
             nameArtist = LoginScreen.getArtist();
             nameSong = NewSongScreen.getSongName();
         }
@@ -108,6 +108,7 @@ public class MainActivity extends ActionBarActivity {
         final Button save = (Button)findViewById(R.id.SAVE);
 
         final TextView tvArtist = (TextView)findViewById(R.id.artist);
+        tvArtist.setText(nameArtist);
         final TextView tvSong = (TextView)findViewById(R.id.textView);
 
 
@@ -239,9 +240,9 @@ public class MainActivity extends ActionBarActivity {
                 stopAll();
 
                 String nameSong = tvSong.getText().toString();
-                String nameArtist = tvArtist.getText().toString();
+                String testArtist = LoginScreen.getArtist();
 
-                String saveData = nameSong+","+nameArtist+","+indexBass+","+indexDrums+","+indexSong+"|";
+                String saveData = nameSong+","+testArtist+","+indexBass+","+indexDrums+","+indexSong+"|";
                 saveData+=SongFile.load(getBaseContext());
                 SongFile.save(getBaseContext(), saveData);
 
@@ -268,11 +269,7 @@ public class MainActivity extends ActionBarActivity {
     public static void setSongStuff(String[] s){
         init = true;
 
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Bass: "+s[2]);
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Drums: "+s[3]);
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Song: "+s[4]);
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Artist: "+s[1]);
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Song Name:"+s[0]);
+
         setbass = Integer.parseInt(s[2]);
         setdrums = Integer.parseInt(s[3]);
         setsong = Integer.parseInt(s[4]);

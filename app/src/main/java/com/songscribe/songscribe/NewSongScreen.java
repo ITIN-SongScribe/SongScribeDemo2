@@ -15,6 +15,7 @@ public class NewSongScreen extends ActionBarActivity {
 
 
     private static String songname = "Song Name";
+    static String nameArtist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +24,11 @@ public class NewSongScreen extends ActionBarActivity {
 
         Button start = (Button) findViewById(R.id.songStart);
         final TextView txtArtist = (TextView)findViewById(R.id.artist);
-        txtArtist.setText(LoginScreen.getArtist());
+        txtArtist.setText(nameArtist);
         
         final EditText sName = (EditText) findViewById(R.id.songName);
+
+
 
         start.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,6 +36,9 @@ public class NewSongScreen extends ActionBarActivity {
 
 
                 songname = sName.getText().toString();
+
+                MainActivity.setNameSong(songname);
+
 
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
@@ -45,7 +51,9 @@ public class NewSongScreen extends ActionBarActivity {
         return songname;
     }
 
-
+    public static void setNameArtist(String name){
+        nameArtist = name;
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

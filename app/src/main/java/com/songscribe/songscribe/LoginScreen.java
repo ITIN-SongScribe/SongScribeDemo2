@@ -33,6 +33,10 @@ public class LoginScreen extends ActionBarActivity {
                 // mText.setText("Welcome "+mEdit.getText().toString()+"!");
 
                 artist = user.getText().toString();
+                MainActivity.setNameArtist(artist);
+                Album.setNameArtist(artist);
+                NewSongScreen.setNameArtist(artist);
+                SongSelection.setNameArtist(artist);
 
                 Intent intent = new Intent(getApplicationContext(), SongSelection.class);
                 startActivity(intent);

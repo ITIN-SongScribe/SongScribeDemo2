@@ -16,6 +16,7 @@ public class Album extends ActionBarActivity {
     Button song2;
     Button song3;
     Button song4;
+    static String nameArtist;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +31,7 @@ public class Album extends ActionBarActivity {
 
 
         final TextView txtArtist = (TextView)findViewById(R.id.artistname);
-        txtArtist.setText(LoginScreen.getArtist());
+        txtArtist.setText(nameArtist);
         final TextView txtSongName = (TextView)findViewById(R.id.button3);
         txtSongName.setText(NewSongScreen.getSongName());
         setUp();
@@ -108,7 +109,9 @@ public class Album extends ActionBarActivity {
         System.out.println("Setup End");
     }
 
-
+    public static void setNameArtist(String name){
+        nameArtist = name;
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
