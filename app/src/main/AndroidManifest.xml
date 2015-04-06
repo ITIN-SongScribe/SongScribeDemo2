@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.songscribe.songscribe" >
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
         android:allowBackup="true"
@@ -32,6 +34,10 @@
         <activity
             android:name=".Album"
             android:label="SongScribe" >
+        </activity>
+        <activity
+            android:name=".VoiceRecord"
+            android:label="@string/title_activity_voice_record" >
         </activity>
     </application>
 
