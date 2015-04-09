@@ -38,7 +38,7 @@ public class MainActivity extends ActionBarActivity {
             nameSong = NewSongScreen.getSongName();
             player = new SoundManager(getBaseContext());
         }
-
+        //player.setAll(0,0,0);
 
         final Button btnPlay=(Button)findViewById(R.id.PLAY);
         final Button btnChords=(Button)findViewById(R.id.button3);
@@ -67,20 +67,20 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View v) {
 
 
-                if (player.isPlaying()) {
-                    player.setPlaying(false);
-                    player.setPaused(true);
-                    btnPlay.setText("Play");
-                    player.pauseUserSong();
+                //if (player.isPlaying()) {
+                    //player.setPlaying(false);
+                   // player.setPaused(true);
+                   // btnPlay.setText("Play");
+                   // player.pauseUserSong();
                     //loopSong = false;
-                } else {
-                    if(!player.isPaused())player.stopAll();
+               // } else {
+                    if(player.isPlaying()) player.stopAll();
                     player.setPaused(false);
                     player.setPlaying(true);
-                    btnPlay.setText("Pause");
+                    btnPlay.setText("Play");
                     player.playUserSong(getBaseContext());
                     //loopSong = true;
-                }
+              //  }
 
             }
         });

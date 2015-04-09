@@ -1,28 +1,21 @@
 package com.songscribe.songscribe;
 
 import android.content.Context;
-import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Build;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
-import java.util.HashMap;
+import com.songscribe.songscribe.util.LinkedList;
 
 
 public class SoundManager {
 
 
     //int[] soundsGuitar = {R.raw.guitar1, R.raw.guitar2, R.raw.guitar3};
-    static int[] soundsBass = {R.raw.bass1,R.raw.bass2,R.raw.bass_variation};
-    static int[] soundsDrums = {R.raw.drum1,R.raw.drum2,R.raw.drum3};
-    static int[] soundsSong = {R.raw.lead1,R.raw.lead2,R.raw.lead3};
+    static int[] soundsBass = {R.raw.bass1,R.raw.bass2,R.raw.bass3,R.raw.bass4,R.raw.bass5,R.raw.bass6,R.raw.bass7,R.raw.bass8};
+    static int[] soundsDrums = {R.raw.drum1,R.raw.drum2,R.raw.drum3,R.raw.drum4,R.raw.drum5,R.raw.drum6,R.raw.drum7,R.raw.drum8};
+    static int[] soundsSong = {R.raw.lead1,R.raw.lead2,R.raw.lead3,R.raw.lead4,R.raw.lead5,R.raw.lead6,R.raw.lead7,R.raw.lead8};
 
 
     static int indexBass = 0, indexDrums = 0,indexSong = 0;
@@ -48,9 +41,9 @@ public class SoundManager {
     //static int[] listDrums = new int [3];
     //static int[] listSong = new int [3];
 
-    static int setbass;
-    static int setdrums;
-    static int setsong;
+    static int setbass =0;
+    static int setdrums=0;
+    static int setsong=0;
 
 
     static boolean init = false;
@@ -65,21 +58,41 @@ public class SoundManager {
     }
     public static void populateBassList(Context c){
         listBass.clear();
-        listBass.insertAtBack(loadSound(c,soundsBass[0]));
+        int i = 0;
+        while(i < soundsBass.length){
+            listBass.insertAtBack(loadSound(c,soundsBass[i]));
+            i++;
+        }
+
+        /*listBass.insertAtBack(loadSound(c,soundsBass[0]));
         listBass.insertAtBack(loadSound(c,soundsBass[1]));
-        listBass.insertAtBack(loadSound(c,soundsBass[2]));
+        listBass.insertAtBack(loadSound(c,soundsBass[2]));*/
     }
     public static void populateDrumsList(Context c){
         listDrums.clear();
+
+        int i = 0;
+        while(i < soundsDrums.length){
+            listDrums.insertAtBack(loadSound(c,soundsDrums[i]));
+            i++;
+        }
+        /*
         listDrums.insertAtBack(loadSound(c,soundsDrums[0]));
         listDrums.insertAtBack(loadSound(c,soundsDrums[1]));
-        listDrums.insertAtBack(loadSound(c,soundsDrums[2]));
+        listDrums.insertAtBack(loadSound(c,soundsDrums[2]));*/
     }
     public static void populateSongList(Context c){
         listSong.clear();
+
+        int i = 0;
+        while(i < soundsSong.length){
+            listSong.insertAtBack(loadSound(c,soundsSong[i]));
+            i++;
+        }
+        /*
         listSong.insertAtBack(loadSound(c,soundsSong[0]));
         listSong.insertAtBack(loadSound(c,soundsSong[1]));
-        listSong.insertAtBack(loadSound(c,soundsSong[2]));
+        listSong.insertAtBack(loadSound(c,soundsSong[2]));*/
     }
 
 
@@ -104,10 +117,10 @@ public class SoundManager {
             p = new SoundPool.Builder().setMaxStreams(10).build();
         else p = new SoundPool(10, AudioManager.STREAM_MUSIC, 1);
 
-
-
+        preInit(c);
+//TODO
         if (!init) {
-            preInit(c);
+
             setbass = 0;
             setdrums = 0;
             setsong = 0;
@@ -124,6 +137,7 @@ public class SoundManager {
 
     private static long getSoundDuration(Context c, int rawId){
         MediaPlayer player = MediaPlayer.create(c, rawId);
+        player.setAudioStreamType(AudioManager.STREAM_MUSIC);
         int duration = player.getDuration();
         return duration;
     }
@@ -283,6 +297,7 @@ public class SoundManager {
     public void playUserSong(Context c){
         stopAll();
         listPlaying.clear();
+        listUserSong.clear();
 
         listUserSong.insertAtBack(listBass.get(indexBass));
         listUserSong.insertAtBack(listDrums.get(indexDrums));
@@ -304,7 +319,7 @@ public class SoundManager {
     public static void playUserSongFromSave(Context c, String[] s){
         stopAll();
         listPlaying.clear();
-
+        listUserSong.clear();
         listUserSong.insertAtBack(listBass.get(Integer.parseInt(s[2])));
         listUserSong.insertAtBack(listDrums.get(Integer.parseInt(s[3])));
         listUserSong.insertAtBack(listSong.get(Integer.parseInt(s[4])));

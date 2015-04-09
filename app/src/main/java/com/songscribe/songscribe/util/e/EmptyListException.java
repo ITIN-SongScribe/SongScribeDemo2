@@ -1,4 +1,4 @@
-package com.songscribe.songscribe;
+package com.songscribe.songscribe.util.e;
 
 public class EmptyListException extends RuntimeException
 {
