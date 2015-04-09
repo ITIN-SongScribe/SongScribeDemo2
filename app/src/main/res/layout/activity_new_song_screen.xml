@@ -17,26 +17,24 @@
         android:layout_alignParentStart="true"
         android:layout_alignBottom="@+id/imageButton"/>
 
-    <Button
-        android:layout_width="80dp"
+    <ImageButton
+        android:layout_width="40dp"
         android:layout_height="40dp"
-        android:text="Logout"
-        android:id="@+id/logout"
-        android:layout_marginTop="12dp"
-        android:layout_centerHorizontal="true"
+        android:id="@+id/imageButton"
+        android:src="@drawable/samprofile"
+        android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:background="#5371d0f7"
-        android:textSize="15dp"
-        android:textColor="#FF004b6c" />
+        android:layout_alignParentEnd="true" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:id="@+id/imageView2"
         android:src="@drawable/horizontal_logo"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView4"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="-40dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -57,8 +55,7 @@
         android:id="@+id/textView5"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textSize="25dp" />
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"

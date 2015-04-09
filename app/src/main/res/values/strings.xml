@@ -7,11 +7,6 @@
     <string name="title_activity_song_selection">SongSelection</string>
     <string name="title_activity_login_screen">SongScribe</string>
     <string name="title_activity_load_song">LoadSong</string>
-<<<<<<< HEAD
     <string name="title_activity_voice_record">VoiceRecord</string>
-=======
-    <string name="title_activity_lyrics">lyrics</string>
-    <string name="title_activity_play_song">PlaySong</string>
->>>>>>> Sam's-branch
 
 </resources>
