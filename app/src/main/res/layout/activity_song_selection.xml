@@ -15,7 +15,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignBottom="@+id/imageButton"/>
+       />
 
     <Button
         android:layout_width="80dp"
@@ -60,11 +60,23 @@
         android:id="@+id/nsong"
         android:background="#7d064cff"
         android:textSize="20dp"
+        android:layout_below="@id/textView"
         android:layout_alignTop="@+id/Browse"
         android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView"
         android:layout_marginLeft="48dp"
-        android:layout_marginStart="48dp" />
+         />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="Browse Artists"
+        android:id="@+id/Browse"
+        android:layout_below="@+id/textView"
+        android:layout_toLeftOf="@+id/logout"
+        android:layout_toStartOf="@+id/logout"
+        android:layout_marginTop="38dp"
+        android:background="#7d064cff"
+        android:textSize="20dp" />
 
     <Button
         android:layout_width="100dp"
@@ -73,9 +85,9 @@
         android:id="@+id/Resume"
         android:background="#7d064cff"
         android:textSize="20dp"
-        android:layout_alignTop="@+id/Album"
-        android:layout_alignLeft="@+id/Browse"
-        android:layout_alignStart="@+id/Browse" />
+        android:layout_alignTop="@+id/LOAD"
+        android:layout_toLeftOf="@+id/logout"
+        android:layout_toStartOf="@+id/logout" />
 
     <Button
         android:layout_width="100dp"
@@ -89,24 +101,8 @@
         android:background="#7d064cff"
         android:textSize="20dp" />
 
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:text="Browse Artists"
-        android:id="@+id/Browse"
-<<<<<<< HEAD
-=======
-        android:layout_alignBaseline="@+id/LOAD"
-        android:layout_alignBottom="@+id/LOAD"
-        android:layout_alignLeft="@+id/Resume"
-        android:layout_alignStart="@+id/Resume"
->>>>>>> origin/Sam's-branch
-        android:background="#7d064cff"
-        android:textSize="20dp"
-        android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView"
-        android:layout_marginRight="40dp" />
+
+
 
 
 
