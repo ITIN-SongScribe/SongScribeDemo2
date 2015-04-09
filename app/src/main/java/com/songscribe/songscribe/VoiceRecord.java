@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.io.File;
 
@@ -29,6 +30,11 @@ public class VoiceRecord extends ActionBarActivity {
 
         _start = (Button) findViewById(R.id.startRecord);
         _stop = (Button) findViewById(R.id.stopRecord);
+
+        final String nameSong;
+        nameSong = NewSongScreen.getSongName();
+        final TextView txtArtist = (TextView)findViewById(R.id.textView4);
+        txtArtist.setText(nameSong);
 
         OUTPUT_FILE= Environment.getExternalStorageDirectory()+"/audiorecorder.3gpp";
     }

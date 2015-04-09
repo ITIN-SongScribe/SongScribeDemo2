@@ -65,13 +65,13 @@
         android:text="Record!"
         android:id="@+id/startRecord"
         android:onClick="buttonTapped"
-        android:layout_marginTop="32dp"
-        android:layout_below="@+id/textView5"
+        android:layout_marginTop="33dp"
         android:background="#5000b5ff"
         android:textSize="20sp"
         android:textColor="#FF004b6c"
-        android:layout_alignRight="@+id/textView5"
-        android:layout_alignEnd="@+id/textView5" />
+        android:layout_below="@+id/textView5"
+        android:layout_centerHorizontal="true"
+        android:clickable="true" />
 
     <Button
         android:layout_width="300dp"
@@ -82,10 +82,10 @@
         android:background="#5000b5ff"
         android:textSize="20sp"
         android:textColor="#FF004b6c"
-        android:layout_alignTop="@+id/startRecord"
-        android:layout_toRightOf="@+id/startRecord"
-        android:layout_toEndOf="@+id/startRecord"
-        android:layout_alignBottom="@+id/startRecord" />
+        android:layout_below="@+id/startRecord"
+        android:layout_alignLeft="@+id/startRecord"
+        android:layout_alignStart="@+id/startRecord"
+        android:clickable="true" />
 
     <Button
         android:layout_width="300dp"
@@ -96,9 +96,10 @@
         android:background="#5000b5ff"
         android:textSize="20sp"
         android:textColor="#FF004b6c"
-        android:layout_below="@+id/startRecord"
-        android:layout_alignLeft="@+id/stopRecord"
-        android:layout_alignStart="@+id/stopRecord" />
+        android:layout_below="@+id/startPlayback"
+        android:layout_alignRight="@+id/startRecord"
+        android:layout_alignEnd="@+id/startRecord"
+        android:clickable="true" />
 
     <Button
         android:layout_width="300dp"
@@ -109,10 +110,9 @@
         android:background="#5000b5ff"
         android:textSize="20sp"
         android:textColor="#FF004b6c"
-        android:layout_below="@+id/startRecord"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/stopRecord"
-        android:layout_toStartOf="@+id/stopRecord" />
+        android:layout_below="@+id/stopRecord"
+        android:layout_alignLeft="@+id/stopRecord"
+        android:layout_alignStart="@+id/stopRecord"
+        android:clickable="true" />
 
 </RelativeLayout>
