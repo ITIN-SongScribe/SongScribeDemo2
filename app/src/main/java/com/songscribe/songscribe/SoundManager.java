@@ -5,6 +5,8 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Build;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.songscribe.songscribe.util.LinkedList;
 
@@ -136,10 +138,10 @@ public class SoundManager {
 
 
     private static long getSoundDuration(Context c, int rawId){
-        MediaPlayer player = MediaPlayer.create(c, rawId);
-        player.setAudioStreamType(AudioManager.STREAM_MUSIC);
-        int duration = player.getDuration();
-        return duration;
+        MediaPlayer mplayer = MediaPlayer.create(c, rawId);
+        mplayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        int d = mplayer.getDuration();
+        return d;
     }
 
 
@@ -262,20 +264,7 @@ public class SoundManager {
     }
 
 
-    /*public int[] playLoopingSound(int loadedSound, int type, int loops, int[] pl){
 
-        int lenPlay = pl.length;
-        int[] temp = new int[lenPlay+1];
-
-        if (loops < 0) loops = 0;
-        for(int i = 0; i < lenPlay; i ++){
-            temp[i] = pl[i];
-            if(type!=-1) userSongArray[type] = loadedSound;
-        }
-        temp[lenPlay] =  p.play(loadedSound, 1, 1, 1, loops, 1);
-
-        return temp;
-    }*/
 
     public static int loadSound(Context c, int rawSound){
         return p.load(c,rawSound,1);
@@ -316,25 +305,34 @@ public class SoundManager {
 
     }
 
-    public static void playUserSongFromSave(Context c, String[] s){
+    public static void playUserSongFromSave(int loops, Context c, String[] s)throws InterruptedException{
         stopAll();
+        Log.d("playUserSongFromSave:", "Loops left: " + loops + " is it playing: " + playing);
         listPlaying.clear();
         listUserSong.clear();
 
         listUserSong.insertAtBack(listBass.get(Integer.parseInt(s[2])));
         listUserSong.insertAtBack(listDrums.get(Integer.parseInt(s[3])));
         listUserSong.insertAtBack(listSong.get(Integer.parseInt(s[4])));
-        int loops = 0;
-        for(int i =0; i < listUserSong.lengthIs(); i++){
 
 
-            //if(i >= userSongArray.length-1) loops = 0;
-            try{
-                listPlaying.insertAtBack(playSound(listUserSong.get(i), -1, -1, 0,c));
-            }catch(InterruptedException e){
+            for (int i = 0; i < listUserSong.lengthIs(); i++) {
 
+
+                //if(i >= userSongArray.length-1) loops = 0;
+                try {
+                    listPlaying.insertAtBack(playSound(listUserSong.get(i), -1, -1, 0, c));
+                } catch (InterruptedException e) {
+
+                }
             }
+        if(loops > 0) {
+
+            Thread.sleep(9000);
+
+            if(playing) playUserSongFromSave(loops-1,c,s);
         }
+
 
     }
     public static void playUserSongFromSaveBuyIndex(Context c, String[] s){

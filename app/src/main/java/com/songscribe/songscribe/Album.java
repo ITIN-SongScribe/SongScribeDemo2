@@ -48,7 +48,11 @@ public class Album extends ActionBarActivity {
                 }else{
                     //String[] s = song1.getText().toString().split("-");
                     //MainActivity.setSongStuff(SongFile.loadBuyNameAndArtist(getBaseContext(), s[0], s[1]));
-                    MainActivity.getPlayer().playUserSongFromSave(getBaseContext(),SongFile.loadBuyIndex(getBaseContext(),0,nameArtist));
+                    try {
+                        MainActivity.getPlayer().playUserSongFromSave(6, getBaseContext(), SongFile.loadBuyIndex(getBaseContext(), 0, nameArtist));
+                    }catch(InterruptedException e){
+
+                    }
                     /*
                     MainActivity.setSongStuff(SongFile.loadBuyIndex(getBaseContext(),0,nameArtist));
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -66,7 +70,11 @@ public class Album extends ActionBarActivity {
                 }else{
                     //String[] s = song2.getText().toString().split("-");
                     //MainActivity.setSongStuff(SongFile.loadBuyNameAndArtist(getBaseContext(),s[0],s[1]));
-                    MainActivity.getPlayer().playUserSongFromSave(getBaseContext(),SongFile.loadBuyIndex(getBaseContext(),1,nameArtist));
+                    try {
+                        MainActivity.getPlayer().playUserSongFromSave(6,getBaseContext(), SongFile.loadBuyIndex(getBaseContext(), 1, nameArtist));
+                    }catch(InterruptedException e){
+
+                    }
                     /*
                     MainActivity.setSongStuff(SongFile.loadBuyIndex(getBaseContext(),1,nameArtist));
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -84,7 +92,11 @@ public class Album extends ActionBarActivity {
                 }else{
                     //String[] s = song3.getText().toString().split("-");
                     //MainActivity.setSongStuff(SongFile.loadBuyNameAndArtist(getBaseContext(),s[0],s[1]));
-                    MainActivity.getPlayer().playUserSongFromSave(getBaseContext(),SongFile.loadBuyIndex(getBaseContext(),2,nameArtist));
+                    try {
+                        MainActivity.getPlayer().playUserSongFromSave(6,getBaseContext(), SongFile.loadBuyIndex(getBaseContext(), 2, nameArtist));
+                    }catch(InterruptedException e){
+
+                    }
                     /*
                     MainActivity.setSongStuff(SongFile.loadBuyIndex(getBaseContext(),2,nameArtist));
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -102,7 +114,11 @@ public class Album extends ActionBarActivity {
                 }else{
                     //String[] s = song4.getText().toString().split("-");
                     //MainActivity.setSongStuff(SongFile.loadBuyNameAndArtist(getBaseContext(),s[0],s[1]));
-                    MainActivity.getPlayer().playUserSongFromSave(getBaseContext(),SongFile.loadBuyIndex(getBaseContext(),3,nameArtist));
+                    try{
+                        MainActivity.getPlayer().playUserSongFromSave(6,getBaseContext(),SongFile.loadBuyIndex(getBaseContext(),3,nameArtist));
+                    }catch(InterruptedException e){
+
+                    }
                     /*
                     MainActivity.setSongStuff(SongFile.loadBuyIndex(getBaseContext(),3,nameArtist));
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
