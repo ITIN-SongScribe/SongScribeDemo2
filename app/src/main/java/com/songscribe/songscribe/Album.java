@@ -41,72 +41,80 @@ public class Album extends ActionBarActivity {
           song1.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View view) {
-                if(song1.getText().toString().equalsIgnoreCase("new song")){
-                    Intent intent = new Intent(getApplicationContext(),NewSongScreen.class);
+                if(song1.getText().toString().equalsIgnoreCase("empty")){
+                    Intent intent = new Intent(getApplicationContext(),SongSelection.class);
                     startActivity(intent);
                 }else{
                     //String[] s = song1.getText().toString().split("-");
                     //MainActivity.setSongStuff(SongFile.loadBuyNameAndArtist(getBaseContext(), s[0], s[1]));
+                    SoundManager.playUserSongFromSave(getBaseContext(),SongFile.loadBuyIndex(getBaseContext(),0,nameArtist));
+                    /*
                     MainActivity.setSongStuff(SongFile.loadBuyIndex(getBaseContext(),0,nameArtist));
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
+                    startActivity(intent);*/
                 }
               }
           });
         song2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(song2.getText().toString().equalsIgnoreCase("new song")){
-                    Intent intent = new Intent(getApplicationContext(),NewSongScreen.class);
+                if(song2.getText().toString().equalsIgnoreCase("empty")){
+                    Intent intent = new Intent(getApplicationContext(),SongSelection.class);
                     startActivity(intent);
                 }else{
                     //String[] s = song2.getText().toString().split("-");
                     //MainActivity.setSongStuff(SongFile.loadBuyNameAndArtist(getBaseContext(),s[0],s[1]));
+                    SoundManager.playUserSongFromSave(getBaseContext(),SongFile.loadBuyIndex(getBaseContext(),1,nameArtist));
+                    /*
                     MainActivity.setSongStuff(SongFile.loadBuyIndex(getBaseContext(),1,nameArtist));
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
+                    startActivity(intent);*/
                 }
             }
         });
         song3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(song3.getText().toString().equalsIgnoreCase("new song")){
-                    Intent intent = new Intent(getApplicationContext(),NewSongScreen.class);
+                if(song3.getText().toString().equalsIgnoreCase("empty")){
+                    Intent intent = new Intent(getApplicationContext(),SongSelection.class);
                     startActivity(intent);
                 }else{
                     //String[] s = song3.getText().toString().split("-");
                     //MainActivity.setSongStuff(SongFile.loadBuyNameAndArtist(getBaseContext(),s[0],s[1]));
+                    SoundManager.playUserSongFromSave(getBaseContext(),SongFile.loadBuyIndex(getBaseContext(),2,nameArtist));
+                    /*
                     MainActivity.setSongStuff(SongFile.loadBuyIndex(getBaseContext(),2,nameArtist));
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
+                    startActivity(intent);*/
                 }
             }
         });
         song4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(song4.getText().toString().equalsIgnoreCase("new song")){
-                    Intent intent = new Intent(getApplicationContext(),NewSongScreen.class);
+                if(song4.getText().toString().equalsIgnoreCase("empty")){
+                    Intent intent = new Intent(getApplicationContext(),SongSelection.class);
                     startActivity(intent);
                 }else{
                     //String[] s = song4.getText().toString().split("-");
                     //MainActivity.setSongStuff(SongFile.loadBuyNameAndArtist(getBaseContext(),s[0],s[1]));
+                    SoundManager.playUserSongFromSave(getBaseContext(),SongFile.loadBuyIndex(getBaseContext(),3,nameArtist));
+                    /*
                     MainActivity.setSongStuff(SongFile.loadBuyIndex(getBaseContext(),3,nameArtist));
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
+                    startActivity(intent);*/
                 }
             }
         });
     }
     private void setUp(){
-        System.out.println("Setup Start");
+
         int i = 0;
         song1.setText(SongFile.loadName(getBaseContext(),i++,nameArtist).toString());
         song2.setText(SongFile.loadName(getBaseContext(),i++,nameArtist).toString());
         song3.setText(SongFile.loadName(getBaseContext(),i++,nameArtist).toString());
         song4.setText(SongFile.loadName(getBaseContext(),i++,nameArtist).toString());
-        System.out.println("Setup End");
+
     }
 
     public static void setNameArtist(String name){

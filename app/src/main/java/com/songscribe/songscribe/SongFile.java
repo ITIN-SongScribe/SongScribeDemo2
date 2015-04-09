@@ -15,8 +15,8 @@ import java.io.OutputStreamWriter;
  */
 public class SongFile {
 
-    private static String baseFile = "Sprint3Final.txt";
-    private static String theFile = "Sprint3Final.txt";
+    private static String baseFile = "00.txt";
+    private static String theFile;
     static int data_block = 100;
     private static int numSongs = 0;
     private static final int SONG_INFO = 5;
@@ -95,22 +95,15 @@ public class SongFile {
     public static String[] loadBuyIndex(Context c, int index, String curArt){
         String[] allSongs = load(c,curArt).split("\\|",MAX_SONGS);
         String[] oneSong = allSongs[index].split(",",SONG_INFO);
-
         return oneSong;
     }
 
     public static String loadName(Context c, int i, String curArt){
         String[] allSongs = load(c,curArt).split("\\|",MAX_SONGS);
-
-        if(i >= (allSongs.length-1)) return "New Song";
-
+        if(i > (allSongs.length-1)) return "Empty";
         String[] oneSong = allSongs[i].split(",",SONG_INFO);
-
-
-
+        if(oneSong.length < 2) return "Empty";
         return oneSong[0]+"-"+oneSong[1];
-
-
     }
 
     private static boolean isFull(){
@@ -118,9 +111,6 @@ public class SongFile {
             //numSongs = 4;
             return true;
         }
-
         return false;
     }
-
-
 }

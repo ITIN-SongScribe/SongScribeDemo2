@@ -1,60 +1,359 @@
 package com.songscribe.songscribe;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Build;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.HashMap;
 
 
 public class SoundManager {
-    private  SoundPool mSoundPool;
-    private  HashMap<Integer, Integer> mSoundPoolMap;
-    private AudioManager mAudioManager;
-    private Context mContext;
-    private int size = -1;
 
-    public SoundManager(Context theContext, int sounds) {
-        mContext = theContext;
 
-        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP)
-        mSoundPool = new SoundPool.Builder()
-                .setMaxStreams(10)
-                .build();
-        else
-            mSoundPool = new SoundPool(sounds, AudioManager.STREAM_MUSIC, 0);
-        mSoundPoolMap = new HashMap<Integer, Integer>();
-        mAudioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
+    int[] soundsGuitar = {R.raw.guitar1, R.raw.guitar2, R.raw.guitar3};
+    static int[] soundsBass = {R.raw.bass1,R.raw.bass2,R.raw.bass_variation};
+    static int[] soundsDrums = {R.raw.drums1,R.raw.drums2,R.raw.drums3};
+    static int[] soundsSong = {R.raw.softgeet1, R.raw.softgeet2,R.raw.softgeet3};
+
+
+    static int indexBass = 0, indexDrums = 0,indexSong = 0;
+    static int[][] soundsAll = {soundsDrums,soundsBass,soundsSong};
+
+    //int[] playing = new int[1];
+
+
+    static boolean playing = false;
+    static boolean paused = false;
+
+
+    static LinkedList<Integer> listPlaying = new LinkedList<Integer>("Playing List");
+    static LinkedList<Integer> listBass = new LinkedList<Integer>("Bass List");
+    static LinkedList<Integer> listDrums = new LinkedList<Integer>("Drums List");
+    static LinkedList<Integer> listSong = new LinkedList<Integer>("Song List");
+    static LinkedList<Integer> listUserSong = new LinkedList<Integer>("User Song List");
+
+
+    //static int[] userSongArray = new int[3];
+
+    //static int[] listBass = new int[3];
+    //static int[] listDrums = new int [3];
+    //static int[] listSong = new int [3];
+
+    static int setbass;
+    static int setdrums;
+    static int setsong;
+
+
+    static boolean init = false;
+    static long duration = 0;
+
+    static SoundPool p;
+
+    private static void preInit(Context c){
+        populateBassList(c);
+        populateDrumsList(c);
+        populateSongList(c);
+    }
+    public static void populateBassList(Context c){
+        listBass.clear();
+        listBass.insertAtBack(loadSound(c,soundsBass[0]));
+        listBass.insertAtBack(loadSound(c,soundsBass[1]));
+        listBass.insertAtBack(loadSound(c,soundsBass[2]));
+    }
+    public static void populateDrumsList(Context c){
+        listDrums.clear();
+        listDrums.insertAtBack(loadSound(c,soundsDrums[0]));
+        listDrums.insertAtBack(loadSound(c,soundsDrums[1]));
+        listDrums.insertAtBack(loadSound(c,soundsDrums[2]));
+    }
+    public static void populateSongList(Context c){
+        listSong.clear();
+        listSong.insertAtBack(loadSound(c,soundsSong[0]));
+        listSong.insertAtBack(loadSound(c,soundsSong[1]));
+        listSong.insertAtBack(loadSound(c,soundsSong[2]));
     }
 
-    public void addSound(int index, int SoundID) {
-        size++;
-        mSoundPoolMap.put(index, mSoundPool.load(mContext, SoundID, 1));
+
+    public static boolean isPlaying(){
+        return  playing;
+    }
+    public static void setPlaying(boolean b){
+        playing = b;
+    }
+    public static boolean isPaused(){
+        return  paused;
+    }
+    public static void setPaused(boolean b){
+        paused = b;
     }
 
-    public void playSound(int index) {
-        float streamVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_RING);
-        streamVolume = streamVolume / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_RING);
+    public SoundManager(Context c) {
 
-        //mSoundPool.play((Integer) mSoundPoolMap.get(index), streamVolume, streamVolume, 1, 0, 1f);
-        mSoundPool.play(index,streamVolume,streamVolume,1,0,1);
+        ///System.out.println(playing.length);
+        //sm = new SoundManager(this, 1);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+            p = new SoundPool.Builder().setMaxStreams(10).build();
+        else p = new SoundPool(10, AudioManager.STREAM_MUSIC, 1);
+
+
+
+        if (!init) {
+            preInit(c);
+            setbass = 0;
+            setdrums = 0;
+            setsong = 0;
+            init = true;
+        }
+
+
+        listUserSong.insertAtBack(listBass.get(setbass));
+        listUserSong.insertAtBack(listDrums.get(setdrums));
+        listUserSong.insertAtBack(listSong.get(setsong));
+    }
+
+
+
+    private static long getSoundDuration(Context c, int rawId){
+        MediaPlayer player = MediaPlayer.create(c, rawId);
+        int duration = player.getDuration();
+        return duration;
+    }
+
+
+    public static void setSongStuff(String[] s){
+        init = true;
+        setbass = Integer.parseInt(s[2]);
+        setdrums = Integer.parseInt(s[3]);
+        setsong = Integer.parseInt(s[4]);
+
 
 
     }
+    public static void setAll(int b, int d, int s){
+        setbass = b;
+        setdrums = d;
+        setsong = s;
+    }
+    public static void setBass(int b, int d, int s){
+        setbass = b;
 
-    public int initSound(Context it,int index){
-        return mSoundPool.load(it, index, 1);
+    }
+    public static void setDrums(int b, int d, int s){
+
+        setdrums = d;
+
+    }
+    public static void setSong(int b, int d, int s){
+
+        setsong = s;
     }
 
-    public void playLoopedSound(int index) {
-        float streamVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
-        streamVolume = streamVolume / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 
-        mSoundPool.play((Integer) mSoundPoolMap.get(index), streamVolume, streamVolume, 1, -1, 1f);
+    public static int getBass(){
+
+        return indexBass;
+    }
+    public static int getDrums(){
+
+        return indexDrums;
+    }
+    public static int getLead(){
+
+        return indexSong;
     }
 
-    public int getSize(){
-        return size;
+
+    public static int lengthBass(){
+        return soundsBass.length;
     }
+    public static int lengthSong(){
+        return soundsSong.length;
+    }
+    public static int lengthDrums(){
+        return soundsDrums.length;
+    }
+    public static int playSound(int loadedSound, int type, int index, int loops, Context c) throws InterruptedException {
+        //listUserSong.clear();
+        if(type!=-1){
+            if(index != -1){
+                if(getSoundDuration(c,soundsAll[type][index]) > duration) duration = getSoundDuration(c,soundsAll[type][index]);
+            }
+            //listUserSong.insertAtBack(loadedSound);
+            ////userSongArray[type] = loadedSound;
+        }
+
+        if(loops > 0){
+            Thread.sleep(9000);
+        }
+
+        return  p.play(loadedSound, 1, 1, 1, 0, 1);
+    }
+
+    public static int buttonChords(Context c){
+        if(indexBass >= lengthBass()-1)indexBass=0;
+        else indexBass++;
+
+        stopAll();
+        listPlaying.clear();
+        if(listBass.isEmpty()) populateBassList(c);
+        try {
+           listPlaying.insertAtBack(playSound(listBass.get(indexBass), 1, indexBass, 0, c));
+        }
+        catch(InterruptedException e){
+
+        }
+        return indexBass+1;
+
+    }
+    public static int buttonDrums(Context c){
+        if(indexDrums >= lengthDrums()-1)indexDrums=0;
+        else indexDrums++;
+
+        stopAll();
+        listPlaying.clear();
+        if(listDrums.isEmpty()) populateDrumsList(c);
+        try {
+            listPlaying.insertAtBack(playSound(listDrums.get(indexDrums), 1, indexDrums, 0,c));
+        }
+        catch(InterruptedException e){
+
+        }
+        return indexDrums+1;
+
+    }
+    public static int buttonLead(Context c){
+        if(indexSong >= lengthSong()-1)indexSong=0;
+        else indexSong++;
+
+        stopAll();
+        listPlaying.clear();
+        if(listSong.isEmpty()) populateSongList(c);
+        try {
+            listPlaying.insertAtBack(playSound(listSong.get(indexSong), 1, indexSong, 0,c));
+        }
+        catch(InterruptedException e){
+
+        }
+        return indexSong+1;
+
+    }
+
+
+    /*public int[] playLoopingSound(int loadedSound, int type, int loops, int[] pl){
+
+        int lenPlay = pl.length;
+        int[] temp = new int[lenPlay+1];
+
+        if (loops < 0) loops = 0;
+        for(int i = 0; i < lenPlay; i ++){
+            temp[i] = pl[i];
+            if(type!=-1) userSongArray[type] = loadedSound;
+        }
+        temp[lenPlay] =  p.play(loadedSound, 1, 1, 1, loops, 1);
+
+        return temp;
+    }*/
+
+    public static int loadSound(Context c, int rawSound){
+        return p.load(c,rawSound,1);
+    }
+
+    public void stopSound(int playingSound){
+        p.stop(playingSound);
+        listPlaying.clear();
+    }
+
+    public static void stopAll(){
+        for(int i =0; i < listUserSong.lengthIs(); i++){
+            p.stop(listUserSong.get(i));
+        }
+        stopUserSong();
+        listPlaying.clear();
+    }
+
+    public void playUserSong(Context c){
+        stopAll();
+        listPlaying.clear();
+
+        listUserSong.insertAtBack(listBass.get(indexBass));
+        listUserSong.insertAtBack(listDrums.get(indexDrums));
+        listUserSong.insertAtBack(listSong.get(indexSong));
+        int loops = 0;
+        for(int i =0; i < listUserSong.lengthIs(); i++){
+
+
+            //if(i >= userSongArray.length-1) loops = 0;
+            try{
+                listPlaying.insertAtBack(playSound(listUserSong.get(i), -1, -1, 0,c));
+            }catch(InterruptedException e){
+
+            }
+        }
+
+    }
+
+    public static void playUserSongFromSave(Context c, String[] s){
+        stopAll();
+        listPlaying.clear();
+
+        listUserSong.insertAtBack(listBass.get(Integer.parseInt(s[2])));
+        listUserSong.insertAtBack(listDrums.get(Integer.parseInt(s[3])));
+        listUserSong.insertAtBack(listSong.get(Integer.parseInt(s[4])));
+        int loops = 0;
+        for(int i =0; i < listUserSong.lengthIs(); i++){
+
+
+            //if(i >= userSongArray.length-1) loops = 0;
+            try{
+                listPlaying.insertAtBack(playSound(listUserSong.get(i), -1, -1, 0,c));
+            }catch(InterruptedException e){
+
+            }
+        }
+
+    }
+    public static void playUserSongFromSaveBuyIndex(Context c, String[] s){
+        listPlaying.clear();
+        int[] song = new int[3];
+        song[0] = Integer.parseInt(s[2]);
+        song[1] = Integer.parseInt(s[3]);
+        song[2] = Integer.parseInt(s[4]);
+
+        int loops = 0;
+        for(int i =0; i < song.length; i++){
+
+
+            //if(i >= userSongArray.length-1) loops = 0;
+            try{
+                listPlaying.insertAtBack(playSound(song[i], -1, -1, 0,c));
+            }catch(InterruptedException e){
+
+            }
+        }
+
+    }
+
+    public void pauseSound(int playingSound){
+        p.pause(playingSound);
+    }
+
+    public static void stopUserSong(){
+        for(int i = 0; i < listPlaying.lengthIs();i++)  p.stop(listPlaying.get(i));
+        listPlaying.clear();
+    }
+
+    public void pauseUserSong(){
+        for(int i = 0; i < listPlaying.lengthIs();i++)  pauseSound(listPlaying.get(i));
+    }
+
+
 }
