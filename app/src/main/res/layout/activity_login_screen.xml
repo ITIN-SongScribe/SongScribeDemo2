@@ -34,7 +34,8 @@
         android:id="@+id/textView5"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textSize="25dp" />
 
     <EditText
         android:layout_width="wrap_content"

@@ -36,8 +36,17 @@
             android:label="SongScribe" >
         </activity>
         <activity
+<<<<<<< HEAD
             android:name=".VoiceRecord"
             android:label="@string/title_activity_voice_record" >
+=======
+            android:name=".lyrics"
+            android:label="@string/title_activity_lyrics" >
+        </activity>
+        <activity
+            android:name=".PlaySong"
+            android:label="@string/title_activity_play_song" >
+>>>>>>> Sam's-branch
         </activity>
     </application>
 
