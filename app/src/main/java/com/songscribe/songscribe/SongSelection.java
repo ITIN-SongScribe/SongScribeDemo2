@@ -8,19 +8,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class SongSelection extends ActionBarActivity {
-
+    static String nameArtist;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_song_selection);
 
         Button nsong = (Button) findViewById(R.id.nsong);
-        final TextView load = (TextView)findViewById(R.id.Album);
+        final TextView load = (TextView)findViewById(R.id.LOAD);
         final TextView txtArtist = (TextView)findViewById(R.id.artist);
-        txtArtist.setText(LoginScreen.getArtist());
+        txtArtist.setText(nameArtist);
 
         nsong.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +43,9 @@ public class SongSelection extends ActionBarActivity {
         });
      }
 
+    public static void setNameArtist(String name){
+        nameArtist = name;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
