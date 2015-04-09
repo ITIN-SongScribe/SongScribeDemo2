@@ -19,10 +19,10 @@ import java.util.HashMap;
 public class SoundManager {
 
 
-    int[] soundsGuitar = {R.raw.guitar1, R.raw.guitar2, R.raw.guitar3};
+    //int[] soundsGuitar = {R.raw.guitar1, R.raw.guitar2, R.raw.guitar3};
     static int[] soundsBass = {R.raw.bass1,R.raw.bass2,R.raw.bass_variation};
-    static int[] soundsDrums = {R.raw.drums1,R.raw.drums2,R.raw.drums3};
-    static int[] soundsSong = {R.raw.softgeet1, R.raw.softgeet2,R.raw.softgeet3};
+    static int[] soundsDrums = {R.raw.drum1,R.raw.drum2,R.raw.drum3};
+    static int[] soundsSong = {R.raw.lead1,R.raw.lead2,R.raw.lead3};
 
 
     static int indexBass = 0, indexDrums = 0,indexSong = 0;
