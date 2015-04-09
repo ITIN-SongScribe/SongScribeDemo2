@@ -320,6 +320,7 @@ public class SoundManager {
         stopAll();
         listPlaying.clear();
         listUserSong.clear();
+
         listUserSong.insertAtBack(listBass.get(Integer.parseInt(s[2])));
         listUserSong.insertAtBack(listDrums.get(Integer.parseInt(s[3])));
         listUserSong.insertAtBack(listSong.get(Integer.parseInt(s[4])));

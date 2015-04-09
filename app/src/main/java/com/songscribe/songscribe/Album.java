@@ -44,10 +44,11 @@ public class Album extends ActionBarActivity {
                 if(song1.getText().toString().equalsIgnoreCase("empty")){
                     Intent intent = new Intent(getApplicationContext(),SongSelection.class);
                     startActivity(intent);
+                    MainActivity.getPlayer().stopAll();
                 }else{
                     //String[] s = song1.getText().toString().split("-");
                     //MainActivity.setSongStuff(SongFile.loadBuyNameAndArtist(getBaseContext(), s[0], s[1]));
-                    SoundManager.playUserSongFromSave(getBaseContext(),SongFile.loadBuyIndex(getBaseContext(),0,nameArtist));
+                    MainActivity.getPlayer().playUserSongFromSave(getBaseContext(),SongFile.loadBuyIndex(getBaseContext(),0,nameArtist));
                     /*
                     MainActivity.setSongStuff(SongFile.loadBuyIndex(getBaseContext(),0,nameArtist));
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -61,10 +62,11 @@ public class Album extends ActionBarActivity {
                 if(song2.getText().toString().equalsIgnoreCase("empty")){
                     Intent intent = new Intent(getApplicationContext(),SongSelection.class);
                     startActivity(intent);
+                    MainActivity.getPlayer().stopAll();
                 }else{
                     //String[] s = song2.getText().toString().split("-");
                     //MainActivity.setSongStuff(SongFile.loadBuyNameAndArtist(getBaseContext(),s[0],s[1]));
-                    SoundManager.playUserSongFromSave(getBaseContext(),SongFile.loadBuyIndex(getBaseContext(),1,nameArtist));
+                    MainActivity.getPlayer().playUserSongFromSave(getBaseContext(),SongFile.loadBuyIndex(getBaseContext(),1,nameArtist));
                     /*
                     MainActivity.setSongStuff(SongFile.loadBuyIndex(getBaseContext(),1,nameArtist));
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -78,10 +80,11 @@ public class Album extends ActionBarActivity {
                 if(song3.getText().toString().equalsIgnoreCase("empty")){
                     Intent intent = new Intent(getApplicationContext(),SongSelection.class);
                     startActivity(intent);
+                    MainActivity.getPlayer().stopAll();
                 }else{
                     //String[] s = song3.getText().toString().split("-");
                     //MainActivity.setSongStuff(SongFile.loadBuyNameAndArtist(getBaseContext(),s[0],s[1]));
-                    SoundManager.playUserSongFromSave(getBaseContext(),SongFile.loadBuyIndex(getBaseContext(),2,nameArtist));
+                    MainActivity.getPlayer().playUserSongFromSave(getBaseContext(),SongFile.loadBuyIndex(getBaseContext(),2,nameArtist));
                     /*
                     MainActivity.setSongStuff(SongFile.loadBuyIndex(getBaseContext(),2,nameArtist));
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -95,10 +98,11 @@ public class Album extends ActionBarActivity {
                 if(song4.getText().toString().equalsIgnoreCase("empty")){
                     Intent intent = new Intent(getApplicationContext(),SongSelection.class);
                     startActivity(intent);
+                    MainActivity.getPlayer().stopAll();
                 }else{
                     //String[] s = song4.getText().toString().split("-");
                     //MainActivity.setSongStuff(SongFile.loadBuyNameAndArtist(getBaseContext(),s[0],s[1]));
-                    SoundManager.playUserSongFromSave(getBaseContext(),SongFile.loadBuyIndex(getBaseContext(),3,nameArtist));
+                    MainActivity.getPlayer().playUserSongFromSave(getBaseContext(),SongFile.loadBuyIndex(getBaseContext(),3,nameArtist));
                     /*
                     MainActivity.setSongStuff(SongFile.loadBuyIndex(getBaseContext(),3,nameArtist));
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);

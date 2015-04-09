@@ -197,4 +197,6 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    public static SoundManager getPlayer(){return player;}
+
 }
