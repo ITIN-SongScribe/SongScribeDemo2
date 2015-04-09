@@ -33,6 +33,14 @@
             android:name=".Album"
             android:label="SongScribe" >
         </activity>
+        <activity
+            android:name=".lyrics"
+            android:label="@string/title_activity_lyrics" >
+        </activity>
+        <activity
+            android:name=".PlaySong"
+            android:label="@string/title_activity_play_song" >
+        </activity>
     </application>
 
 </manifest>
