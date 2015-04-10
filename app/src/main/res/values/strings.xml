@@ -8,5 +8,6 @@
     <string name="title_activity_login_screen">SongScribe</string>
     <string name="title_activity_load_song">LoadSong</string>
     <string name="title_activity_voice_record">VoiceRecord</string>
+    <string name="title_activity_lyrics">Lyrics</string>
 
 </resources>

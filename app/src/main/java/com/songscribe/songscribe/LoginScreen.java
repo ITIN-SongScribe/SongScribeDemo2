@@ -52,6 +52,8 @@ public class LoginScreen extends ActionBarActivity {
                 Album.setNameArtist(artist);
                 NewSongScreen.setNameArtist(artist);
                 SongSelection.setNameArtist(artist);
+                Lyrics.setNameArtist(artist);
+                VoiceRecord.setNameArtist(artist);
 
                 Intent intent = new Intent(getApplicationContext(), SongSelection.class);
                 startActivity(intent);

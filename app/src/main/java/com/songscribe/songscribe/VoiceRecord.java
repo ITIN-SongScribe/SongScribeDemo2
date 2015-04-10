@@ -19,6 +19,7 @@ public class VoiceRecord extends ActionBarActivity {
     private MediaPlayer mediaPlayer;
     private MediaRecorder recorder;
     private String OUTPUT_FILE;
+    static String nameArtist;
 
     static boolean isRecording = false;
     static boolean isPlaying = false;
@@ -189,6 +190,9 @@ public class VoiceRecord extends ActionBarActivity {
 
     }
 
+    public static void setNameArtist(String name){
+        nameArtist = name;
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

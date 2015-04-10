@@ -1,10 +1,6 @@
 package com.songscribe.songscribe;
 
 import android.content.Intent;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.media.SoundPool;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -46,7 +42,7 @@ public class MainActivity extends ActionBarActivity {
         final Button btnLead=(Button)findViewById(R.id.button5);
         final Button btnStop=(Button)findViewById(R.id.button2);
         final Button save = (Button)findViewById(R.id.SAVE);
-        final Button toRecordPage = (Button)findViewById(R.id.toRecordPage);
+        final Button next = (Button)findViewById(R.id.next);
 
         final TextView tvArtist = (TextView)findViewById(R.id.artist);
         tvArtist.setText(nameArtist);
@@ -149,10 +145,10 @@ public class MainActivity extends ActionBarActivity {
 
         });
 
-        toRecordPage.setOnClickListener(new View.OnClickListener() {
+        next.setOnClickListener(new View.OnClickListener() {
             @Override
         public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), VoiceRecord.class);
+                Intent intent = new Intent(getApplicationContext(), Lyrics.class);
                 startActivity(intent);
             }
         });
