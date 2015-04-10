@@ -29,7 +29,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="-40dp" />
+        android:layout_above="@+id/textView2"
+        android:layout_marginLeft="-125dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -39,21 +40,20 @@
         android:textSize="25sp"
         android:textColor="#ffffffff"
         android:textStyle="bold|italic"
-        android:layout_alignBottom="@+id/imageView2"
+        android:layout_marginTop="33dp"
+        android:layout_below="@+id/logout"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="52dp" />
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/songName"
         android:hint="Enter your Song Name"
-        android:layout_alignBottom="@+id/imageView2"
+        android:layout_marginTop="17dp"
+        android:layout_below="@+id/textView2"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/rSongName"
-        android:layout_toLeftOf="@+id/rSongName" />
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -61,10 +61,9 @@
         android:text="random"
         android:id="@+id/rSongName"
         android:background="#5000b5ff"
-        android:layout_alignBottom="@+id/imageView2"
+        android:layout_alignBottom="@+id/songName"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="7dp"/>
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -75,7 +74,8 @@
         android:textSize="25sp"
         android:textColor="#ffffffff"
         android:textStyle="bold|italic"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="39dp"
+        android:layout_below="@+id/songName"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -106,18 +106,17 @@
         android:layout_below="@id/textView"
         android:layout_marginTop="30dp">
 
+        <EditText
+            android:id="@+id/lyrics"
+            android:hint="Type up your lyrics here, or freestyle on the next page!"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#02960B"
+            android:textSize="18sp"
+            android:layout_below="@id/textView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
     </ScrollView>
-
-    <EditText
-        android:id="@+id/lyrics"
-        android:hint="Type up your lyrics here, or freestyle on the next page!"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#02960B"
-        android:textSize="18sp"
-        android:layout_below="@id/textView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="300dp"
@@ -127,7 +126,7 @@
         android:background="#5000b5ff"
         android:textSize="20dp"
         android:textColor="#FF004b6c"
-        android:layout_alignBottom="@+id/lyricsScroll"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
 

@@ -1,8 +1,8 @@
 package com.songscribe.songscribe;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,11 +14,12 @@ import java.util.Random;
 
 public class Lyrics extends ActionBarActivity {
 
-    private static String songName = "Song Name";
+    private static String songname = "Song Name";
+    private static String saveDataT;
     private static String rSong [] = new String[20];
     //private static String lyricsT = "Lyrics";
     static String nameArtist;
-    //static String nameSong;
+    static String nameSong;
     //static String lyrics;
 
     @Override
@@ -50,16 +51,26 @@ public class Lyrics extends ActionBarActivity {
                 // mText = (TextView)findViewById(R.id.welcome);
                 // mText.setText("Welcome "+mEdit.getText().toString()+"!");
 
-                songName = song.getText().toString();
-                MainActivity.setNameArtist(songName);
-                Album.setNameArtist(songName);
-                NewSongScreen.setNameArtist(songName);
-                SongSelection.setNameArtist(songName);
+                songname = song.getText().toString();
+                MainActivity.setNameSong(songname);
+                Album.setNameSong(songname);
+
+                nameSong = songname;
+
+                String testArtist = LoginScreen.getArtist();
+
+                String saveData = nameSong+","+saveDataT;
+                saveData+=SongFile.load(getBaseContext(),testArtist);
+                SongFile.save(getBaseContext(), saveData, testArtist);
 
                 //lyricsT = lyricsField.getText().toString();
                 // VoiceRecord.setLyricsT(lyrics);
-
+                /*
                 Intent intent = new Intent(getApplicationContext(), VoiceRecord.class);
+                startActivity(intent);
+                */
+
+                Intent intent = new Intent(getApplicationContext(), Album.class);
                 startActivity(intent);
             }
         });
@@ -97,6 +108,13 @@ public class Lyrics extends ActionBarActivity {
     }
     //public static void setNameSong(String song) { nameSong = song; }
     //public static void setLyrics(String lyrics) { lyrics = lyricsT; }
+
+    public static String getSongName(){
+
+        return songname;
+    }
+
+    public static void setData(String dataTemp) { saveDataT = dataTemp; }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

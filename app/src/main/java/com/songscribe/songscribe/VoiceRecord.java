@@ -30,7 +30,7 @@ public class VoiceRecord extends ActionBarActivity {
         setContentView(R.layout.activity_voice_record);
 
         final String nameSong;
-        nameSong = NewSongScreen.getSongName();
+        nameSong = Lyrics.getSongName();
         final TextView txtArtist = (TextView)findViewById(R.id.textView4);
         txtArtist.setText(nameSong);
 

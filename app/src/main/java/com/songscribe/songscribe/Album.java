@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 public class Album extends ActionBarActivity {
@@ -17,6 +16,7 @@ public class Album extends ActionBarActivity {
     Button song3;
     Button song4;
     static String nameArtist;
+    static String nameSong;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +33,7 @@ public class Album extends ActionBarActivity {
         final TextView txtArtist = (TextView)findViewById(R.id.artistname);
         txtArtist.setText(nameArtist);
         final TextView txtSongName = (TextView)findViewById(R.id.button3);
-        txtSongName.setText(NewSongScreen.getSongName());
+        txtSongName.setText(Lyrics.getSongName());
         setUp();
         // final String txtAlbumArtist = txtArtist + "'s Album!";
 
@@ -140,6 +140,7 @@ public class Album extends ActionBarActivity {
     public static void setNameArtist(String name){
         nameArtist = name;
     }
+    public static void setNameSong(String song) { nameSong = song; }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
