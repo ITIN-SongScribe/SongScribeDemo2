@@ -63,8 +63,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="Record!"
-        android:id="@+id/startRecord"
-        android:onClick="buttonTapped"
+        android:id="@+id/recordButton"
         android:layout_marginTop="33dp"
         android:background="#5000b5ff"
         android:textSize="20sp"
@@ -76,43 +75,14 @@
     <Button
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Stop record"
-        android:id="@+id/stopRecord"
-        android:onClick="buttonTapped"
+        android:text="Playback"
+        android:id="@+id/playbackButton"
         android:background="#5000b5ff"
         android:textSize="20sp"
         android:textColor="#FF004b6c"
-        android:layout_below="@+id/startRecord"
-        android:layout_alignLeft="@+id/startRecord"
-        android:layout_alignStart="@+id/startRecord"
-        android:clickable="true" />
-
-    <Button
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="Stop Playback"
-        android:id="@+id/stopPlayback"
-        android:onClick="buttonTapped"
-        android:background="#5000b5ff"
-        android:textSize="20sp"
-        android:textColor="#FF004b6c"
-        android:layout_below="@+id/startPlayback"
-        android:layout_alignRight="@+id/startRecord"
-        android:layout_alignEnd="@+id/startRecord"
-        android:clickable="true" />
-
-    <Button
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="Start Playback"
-        android:id="@+id/startPlayback"
-        android:onClick="buttonTapped"
-        android:background="#5000b5ff"
-        android:textSize="20sp"
-        android:textColor="#FF004b6c"
-        android:layout_below="@+id/stopRecord"
-        android:layout_alignLeft="@+id/stopRecord"
-        android:layout_alignStart="@+id/stopRecord"
-        android:clickable="true" />
+        android:clickable="true"
+        android:layout_below="@+id/recordButton"
+        android:layout_alignLeft="@+id/recordButton"
+        android:layout_alignStart="@+id/recordButton" />
 
 </RelativeLayout>

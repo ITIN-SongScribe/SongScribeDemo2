@@ -20,16 +20,13 @@ public class VoiceRecord extends ActionBarActivity {
     private MediaRecorder recorder;
     private String OUTPUT_FILE;
 
-    Button _start;
-    Button _stop;
+    static boolean isRecording = false;
+    static boolean isPlaying = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voice_record);
-
-        _start = (Button) findViewById(R.id.startRecord);
-        _stop = (Button) findViewById(R.id.stopRecord);
 
         final String nameSong;
         nameSong = NewSongScreen.getSongName();
@@ -37,38 +34,110 @@ public class VoiceRecord extends ActionBarActivity {
         txtArtist.setText(nameSong);
 
         OUTPUT_FILE= Environment.getExternalStorageDirectory()+"/audiorecorder.3gpp";
+
+        final Button record=(Button)findViewById(R.id.recordButton);
+        final Button playback=(Button)findViewById(R.id.playbackButton);
+
+
+
+        record.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (isRecording) {
+                    try {
+                        stopRecording();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    record.setText("Record!");
+                }
+                else {
+                    try {
+                        beginRecording();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    record.setText("Stop Recording");
+                }
+                isRecording=changeState(isRecording);
+
+            }
+        });
+
+        playback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(isPlaying) {
+                    try {
+                        stopPlayback();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    playback.setText("Play");
+                }
+                else {
+                    try {
+                        playRecording();
+                    }catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    playback.setText("Stop");
+                }
+                isPlaying=changeState(isPlaying);
+
+            }
+        });
+
+
+        /*switch(view.getId()){
+            case R.id.recordButton:
+                if(isRecording == 0) {
+                    try {
+                        beginRecording();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                else if(isRecording == 1)
+                {
+                    try {
+                        stopRecording();
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+                isRecording=changeState(isRecording);
+                break;
+
+            case R.id.playbackButton:
+                if(isPlaying == 0)
+                {
+                    try {
+                        playRecording();
+                    }catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                else if(isPlaying == 1) {
+                    try {
+                        stopPlayback();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                isPlaying=changeState(isPlaying);
+                break;
+        }*/
+
     }
-    public void buttonTapped(View view){
-        switch(view.getId()){
-            case R.id.startRecord:
-                try {
-                    beginRecording();
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-                break;
-            case R.id.stopRecord:
-                try {
-                    stopRecording();
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-                break;
-            case R.id.startPlayback:
-                try {
-                    playRecording();
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-                break;
-            case R.id.stopPlayback:
-                try {
-                    stopPlayback();
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-                break;
-        }
+    private static boolean changeState(boolean position)
+    {
+        position = !position;
+        return position;
+
     }
     private void stopPlayback(){
         if(mediaPlayer != null)
