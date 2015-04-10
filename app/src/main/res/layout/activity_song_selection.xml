@@ -15,16 +15,19 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignBottom="@+id/imageButton"/>
+        />
 
-    <ImageButton
-        android:layout_width="40dp"
+    <Button
+        android:layout_width="80dp"
         android:layout_height="40dp"
-        android:id="@+id/imageButton"
-        android:src="@drawable/samprofile"
-        android:layout_alignParentTop="true"
+        android:text="Logout"
+        android:id="@+id/logout"
+        android:layout_marginTop="12dp"
+        android:layout_centerHorizontal="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:background="#5371d0f7"
+        android:textSize="15dp"
+        android:textColor="#FF004b6c" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -55,50 +58,52 @@
         android:layout_height="100dp"
         android:text="New Song"
         android:id="@+id/nsong"
-        android:layout_marginRight="22dp"
-        android:layout_marginEnd="22dp"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/Resume"
-        android:layout_toStartOf="@+id/Resume"
         android:background="#7d064cff"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:layout_marginLeft="62dp"
+        android:layout_marginStart="42dp"
+        android:layout_centerVertical="true"
+        android:layout_below="@id/textView"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="30dp" />
 
     <Button
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:text="Resume Song"
         android:id="@+id/Resume"
-        android:layout_alignTop="@+id/nsong"
-        android:layout_toLeftOf="@+id/imageButton"
-        android:layout_toStartOf="@+id/imageButton"
-        android:layout_marginRight="30dp"
-        android:layout_marginEnd="30dp"
         android:background="#7d064cff"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:layout_toRightOf="@id/nsong"
+        android:layout_alignTop="@+id/nsong"
+        android:layout_toEndOf="@+id/nsong" />
 
     <Button
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:text="Your Album"
         android:id="@+id/LOAD"
+        android:background="#7d064cff"
+        android:textSize="20dp"
         android:layout_below="@+id/nsong"
         android:layout_alignLeft="@+id/nsong"
-        android:layout_alignStart="@+id/nsong"
-        android:layout_marginTop="28dp"
-        android:background="#7d064cff"
-        android:textSize="20dp" />
+        android:layout_alignStart="@+id/nsong" />
+
 
     <Button
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:text="Browse Artists"
         android:id="@+id/Browse"
-        android:layout_alignBaseline="@+id/LOAD"
-        android:layout_alignBottom="@+id/LOAD"
-        android:layout_alignLeft="@+id/Resume"
-        android:layout_alignStart="@+id/Resume"
         android:background="#7d064cff"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:layout_alignTop="@+id/LOAD"
+        android:layout_toRightOf="@+id/nsong"
+        android:layout_toEndOf="@+id/nsong" />
+
 
 
 
