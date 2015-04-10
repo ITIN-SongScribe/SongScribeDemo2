@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.Random;
+
 
 public class LoginScreen extends ActionBarActivity {
 
@@ -16,6 +18,7 @@ public class LoginScreen extends ActionBarActivity {
     // TextView mText;
 
     private static String artist = "Artist";
+    private static String rName [] = new String[20];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +26,20 @@ public class LoginScreen extends ActionBarActivity {
         setContentView(R.layout.activity_login_screen);
 
         Button login = (Button) findViewById(R.id.userLogin);
+        Button random = (Button) findViewById(R.id.random);
         final EditText user = (EditText) findViewById(R.id.userName);
 
+        random.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Random r = new Random();
+                int number = r.nextInt(20);
+
+                user.setText(rNameArray(number));
+
+            }
+        });
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,6 +59,31 @@ public class LoginScreen extends ActionBarActivity {
         });
     }
 
+    public static String rNameArray(int num){
+
+        rName[0] = "Ned Steerin";
+        rName[1] = "Shady Perry";
+        rName[2] = "Micki MiMouse";
+        rName[3] = "Justin Beaver";
+        rName[4] = "Chustin Pimperlake";
+        rName[5] = "Juno Earth";
+        rName[6] = "P mama";
+        rName[7] = "Dr. D-Money";
+        rName[8] = "Spam Smith";
+        rName[9] = "Taylor Quick";
+        rName[10] = "My Cat Boone";
+        rName[11] = "Reddish 6";
+        rName[12] = "One Democratic";
+        rName[13] = "Trip In Girl";
+        rName[14] = "Meghan Craner";
+        rName[15] = "Tessie Tay";
+        rName[16] = "Meyonce";
+        rName[17] = "Parry Overwood";
+        rName[18] = "Think About Lizards";
+        rName[19] = "Tim McBra";
+
+        return rName[num];
+    }
     public static String getArtist(){
 
         return artist;
