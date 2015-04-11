@@ -21,6 +21,7 @@ public class VoiceRecord extends ActionBarActivity {
     private MediaRecorder recorder;
     private String OUTPUT_FILE;
     static String nameArtist;
+    static String lyrics;
 
     static boolean isRecording = false;
     static boolean isPlaying = false;
@@ -41,6 +42,9 @@ public class VoiceRecord extends ActionBarActivity {
         final Button playback=(Button)findViewById(R.id.playbackButton);
         final Button finalsave=(Button)findViewById(R.id.finalSave);
 
+        final TextView lyricsD = (TextView)findViewById(R.id.lDisplay);
+        lyricsD.setText(lyrics);
+
 
 
         record.setOnClickListener(new View.OnClickListener() {
@@ -56,12 +60,12 @@ public class VoiceRecord extends ActionBarActivity {
                     record.setText("Record!");
                 }
                 else {
+                    record.setText("Stop Recording");
                     try {
                         beginRecording();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    record.setText("Stop Recording");
                 }
                 isRecording=changeState(isRecording);
 
@@ -209,9 +213,11 @@ public class VoiceRecord extends ActionBarActivity {
 
     }
 
-    public static void setNameArtist(String name){
-        nameArtist = name;
+    public static void setNameArtist(String name){ nameArtist = name; }
+    public static void setLyrics(String l){
+        lyrics = l;
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

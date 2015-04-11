@@ -86,4 +86,16 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lyrics"
+        android:id="@+id/lDisplay"
+        android:layout_below="@+id/imageView2"
+        android:layout_above="@+id/playbackButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/finalSave"
+        android:layout_alignEnd="@+id/finalSave" />
+
 </RelativeLayout>
