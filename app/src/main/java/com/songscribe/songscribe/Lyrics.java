@@ -17,7 +17,7 @@ public class Lyrics extends ActionBarActivity {
     private static String songname = "Song Name";
     private static String saveDataT;
     private static String rSong [] = new String[20];
-    //private static String lyricsT = "Lyrics";
+    private static String lyricsT = "Lyrics";
     static String nameArtist;
     static String nameSong;
     //static String lyrics;
@@ -29,9 +29,10 @@ public class Lyrics extends ActionBarActivity {
 
         Button save = (Button) findViewById(R.id.userLogin);
         Button random = (Button) findViewById(R.id.rSongName);
+        Button play = (Button) findViewById(R.id.playback);
 
         final EditText song = (EditText) findViewById(R.id.songName);
-        //final EditText lyricsField = (EditText) findViewById(R.id.lyrics);
+        final EditText lyricsField = (EditText) findViewById(R.id.lyrics);
 
         random.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +45,17 @@ public class Lyrics extends ActionBarActivity {
 
             }
         });
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                /*try {
+                    MainActivity.getPlayer().playUserSongFromSave(6, getBaseContext(), SongFile.loadBuyIndex(getBaseContext(), 0, nameArtist));
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }*/
+            }
+        });
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,6 +66,9 @@ public class Lyrics extends ActionBarActivity {
                 songname = song.getText().toString();
                 MainActivity.setNameSong(songname);
                 Album.setNameSong(songname);
+
+                lyricsT = lyricsField.getText().toString();
+                VoiceRecord.setLyrics(lyricsT);
 
                 nameSong = songname;
 

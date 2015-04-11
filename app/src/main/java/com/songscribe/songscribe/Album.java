@@ -53,11 +53,11 @@ startActivity(intent);*/
                     startActivity(intent);
                     MainActivity.getPlayer().stopAll();
                 }else {
-                      try {
+                      /*try {
                           MainActivity.getPlayer().playUserSongFromSave(6, getBaseContext(), SongFile.loadBuyIndex(getBaseContext(), 0, nameArtist));
                       } catch (InterruptedException e) {
                           e.printStackTrace();
-                      }
+                      }*/
                       try {
                           MediaPlayer mp = new MediaPlayer();
                           mp.setDataSource("/mnt/sdcard/audiorecorder.3gpp");
