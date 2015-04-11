@@ -1,10 +1,6 @@
 package com.songscribe.songscribe;
 
 import android.content.Intent;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.media.SoundPool;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -16,7 +12,7 @@ import android.widget.TextView;
 public class MainActivity extends ActionBarActivity {
 
 
-    static String nameArtist, nameSong;
+    static String nameArtist, nameSong, saveDataT;
 
     static boolean init = false;
 
@@ -40,13 +36,14 @@ public class MainActivity extends ActionBarActivity {
         }
         //player.setAll(0,0,0);
 
-        final Button btnPlay=(Button)findViewById(R.id.PLAY);
         final Button btnChords=(Button)findViewById(R.id.button3);
         final Button btnDrums=(Button)findViewById(R.id.button4);
         final Button btnLead=(Button)findViewById(R.id.button5);
+        final Button btnMore=(Button)findViewById(R.id.button6);
+        final Button btnPlay=(Button)findViewById(R.id.PLAY);
         final Button btnStop=(Button)findViewById(R.id.button2);
         final Button save = (Button)findViewById(R.id.SAVE);
-        final Button toRecordPage = (Button)findViewById(R.id.toRecordPage);
+
 
         final TextView tvArtist = (TextView)findViewById(R.id.artist);
         tvArtist.setText(nameArtist);
@@ -106,6 +103,17 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        /*
+        btnMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnLead.setText("Lead: "+player.buttonLead(getBaseContext()));
+            }
+        });
+        */
+
+
+
         btnStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,37 +143,28 @@ public class MainActivity extends ActionBarActivity {
 
                 player.stopAll();
 
-                String nameSong = tvSong.getText().toString();
                 String testArtist = LoginScreen.getArtist();
 
-                String saveData = nameSong+","+testArtist+","+player.getBass()+","+player.getDrums()+","+player.getLead()+"|";
-                saveData+=SongFile.load(getBaseContext(),testArtist);
-                SongFile.save(getBaseContext(), saveData, testArtist);
+                String saveDataTemp = testArtist+","+player.getBass()+","+player.getDrums()+","+player.getLead()+"|";
+                saveDataTemp+=SongFile.load(getBaseContext(),testArtist);
+                SongFile.save(getBaseContext(), saveDataTemp, testArtist);
+                setData(saveDataTemp);
 
-                Intent intent = new Intent(getApplicationContext(), SongSelection.class);
+                Intent intent = new Intent(getApplicationContext(), Lyrics.class);
                 startActivity(intent);
 
             }
 
-        });
-
-        toRecordPage.setOnClickListener(new View.OnClickListener() {
-            @Override
-        public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), VoiceRecord.class);
-                startActivity(intent);
-            }
         });
 
     }
 
-
-
+    public static void setData(String dataTemp) { saveDataT = dataTemp; }
     public static void setNameArtist(String name){
         nameArtist = name;
     }
-    public static void setNameSong(String name){
-        nameSong = name;
+    public static void setNameSong(String song){
+        nameSong = song;
     }
     public static void setSongStuff(String[] s) {
         init = true;

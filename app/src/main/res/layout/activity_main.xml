@@ -32,10 +32,9 @@
         android:id="@+id/imageView2"
         android:src="@drawable/horizontal_logo"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignBottom="@+id/artist"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="-40dp" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -43,94 +42,95 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="&#34;@+id/txtsongName&#34;"
         android:id="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="155dp"
-        android:textSize="35sp"
+        android:textSize="20sp"
         android:textColor="#ffffffff"
-        android:textStyle="bold|italic" />
+        android:textStyle="bold|italic"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true" />
 
     <Button
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
         android:text="Bass: 1"
         android:id="@+id/button3"
-        android:layout_marginRight="22dp"
-        android:layout_marginEnd="22dp"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/button4"
-        android:layout_toStartOf="@+id/button4"
-        android:textSize="20dp"
-        android:background="#7d064cff" />
+        android:textSize="15sp"
+        android:background="#7d064cff"
+        android:layout_below="@+id/textView"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView" />
 
     <Button
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
         android:text="Drum: 1"
         android:id="@+id/button4"
-        android:layout_alignTop="@+id/button3"
-        android:layout_toLeftOf="@+id/imageButton"
-        android:layout_toStartOf="@+id/imageButton"
-        android:layout_marginRight="30dp"
-        android:layout_marginEnd="30dp"
         android:background="#7d064cff"
-        android:textSize="20dp" />
+        android:textSize="15sp"
+        android:layout_alignTop="@+id/button3"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView" />
 
     <Button
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:text="Chord: 1"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:text="Lead: 1"
         android:id="@+id/button5"
+        android:background="#7d064cff"
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/button3"
         android:layout_alignLeft="@+id/button3"
-        android:layout_alignStart="@+id/button3"
-        android:layout_marginTop="28dp"
-        android:background="#7d064cff"
-        android:textSize="20dp" />
+        android:layout_alignStart="@+id/button3" />
 
     <Button
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:text="Save"
-        android:id="@+id/SAVE"
-        android:layout_alignBaseline="@+id/button5"
-        android:layout_alignBottom="@+id/button5"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:text="More: 1"
+        android:id="@+id/button6"
+        android:background="#7d064cff"
+        android:textSize="15sp"
+        android:layout_alignTop="@+id/button5"
         android:layout_alignLeft="@+id/button4"
-        android:layout_alignStart="@+id/button4"
-        android:background="#7d064cff"
-        android:textSize="20dp" />
+        android:layout_alignStart="@+id/button4" />
 
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
         android:text="Play"
         android:id="@+id/PLAY"
-        android:layout_alignBaseline="@+id/button2"
-        android:layout_alignBottom="@+id/button2"
-        android:layout_alignLeft="@+id/SAVE"
-        android:layout_alignStart="@+id/SAVE"
-        android:background="#7900ff0f" />
+        android:textSize="10sp"
+        android:layout_marginTop="10dp"
+        android:background="#7900ff0f"
+        android:layout_below="@+id/button6"
+        android:layout_alignLeft="@+id/button6"
+        android:layout_alignStart="@+id/button6" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
         android:text="Stop"
         android:id="@+id/button2"
-        android:layout_alignParentBottom="true"
+        android:textSize="10sp"
+        android:background="#ffff9883"
+        android:layout_alignBaseline="@+id/PLAY"
+        android:layout_alignBottom="@+id/PLAY"
         android:layout_alignRight="@+id/button5"
-        android:layout_alignEnd="@+id/button5"
-        android:layout_marginBottom="19dp"
-        android:background="#ffff9883" />
+        android:layout_alignEnd="@+id/button5" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Next"
-        android:id="@+id/toRecordPage"
-        android:layout_alignBottom="@+id/PLAY"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_height="35dp"
+        android:text="Save"
+        android:id="@+id/SAVE"
+        android:background="#7d064cff"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/imageButton"
+        android:layout_alignEnd="@+id/imageButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>

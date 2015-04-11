@@ -1,5 +1,6 @@
 package com.songscribe.songscribe;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ public class VoiceRecord extends ActionBarActivity {
     private MediaPlayer mediaPlayer;
     private MediaRecorder recorder;
     private String OUTPUT_FILE;
+    static String nameArtist;
 
     static boolean isRecording = false;
     static boolean isPlaying = false;
@@ -29,7 +31,7 @@ public class VoiceRecord extends ActionBarActivity {
         setContentView(R.layout.activity_voice_record);
 
         final String nameSong;
-        nameSong = NewSongScreen.getSongName();
+        nameSong = Lyrics.getSongName();
         final TextView txtArtist = (TextView)findViewById(R.id.textView4);
         txtArtist.setText(nameSong);
 
@@ -37,6 +39,7 @@ public class VoiceRecord extends ActionBarActivity {
 
         final Button record=(Button)findViewById(R.id.recordButton);
         final Button playback=(Button)findViewById(R.id.playbackButton);
+        final Button finalsave=(Button)findViewById(R.id.finalSave);
 
 
 
@@ -87,6 +90,17 @@ public class VoiceRecord extends ActionBarActivity {
                 }
                 isPlaying=changeState(isPlaying);
 
+            }
+        });
+
+        finalsave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                stopPlayback();
+                
+                Intent intent = new Intent(getApplicationContext(), SongSelection.class);
+                startActivity(intent);
             }
         });
 
@@ -155,6 +169,7 @@ public class VoiceRecord extends ActionBarActivity {
     private void stopRecording(){
         if(recorder != null)
             recorder.stop();
+        MainActivity.getPlayer().stopAll();
     }
     private void beginRecording() throws Exception{
         ditchMediaRecorder();
@@ -171,6 +186,11 @@ public class VoiceRecord extends ActionBarActivity {
         recorder.prepare();
         recorder.start();
 
+        try {
+            MainActivity.getPlayer().playUserSongFromSave(6, getBaseContext(), SongFile.loadBuyIndex(getBaseContext(), 0, nameArtist));
+        }catch(InterruptedException e){
+            e.printStackTrace();
+        }
     }
     private void ditchMediaRecorder(){
         if(recorder != null)
@@ -189,6 +209,9 @@ public class VoiceRecord extends ActionBarActivity {
 
     }
 
+    public static void setNameArtist(String name){
+        nameArtist = name;
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

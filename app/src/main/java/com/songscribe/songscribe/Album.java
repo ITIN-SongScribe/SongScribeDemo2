@@ -1,6 +1,7 @@
 package com.songscribe.songscribe;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -8,7 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 public class Album extends ActionBarActivity {
@@ -17,6 +17,7 @@ public class Album extends ActionBarActivity {
     Button song3;
     Button song4;
     static String nameArtist;
+    static String nameSong;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +34,7 @@ public class Album extends ActionBarActivity {
         final TextView txtArtist = (TextView)findViewById(R.id.artistname);
         txtArtist.setText(nameArtist);
         final TextView txtSongName = (TextView)findViewById(R.id.button3);
-        txtSongName.setText(NewSongScreen.getSongName());
+        txtSongName.setText(Lyrics.getSongName());
         setUp();
         // final String txtAlbumArtist = txtArtist + "'s Album!";
 
@@ -41,23 +42,31 @@ public class Album extends ActionBarActivity {
           song1.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View view) {
-                if(song1.getText().toString().equalsIgnoreCase("empty")){
+                  //String[] s = song1.getText().toString().split("-");
+//MainActivity.setSongStuff(SongFile.loadBuyNameAndArtist(getBaseContext(), s[0], s[1]));
+/*
+MainActivity.setSongStuff(SongFile.loadBuyIndex(getBaseContext(),0,nameArtist));
+Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+startActivity(intent);*/
+                  if(song1.getText().toString().equalsIgnoreCase("empty")){
                     Intent intent = new Intent(getApplicationContext(),SongSelection.class);
                     startActivity(intent);
                     MainActivity.getPlayer().stopAll();
-                }else{
-                    //String[] s = song1.getText().toString().split("-");
-                    //MainActivity.setSongStuff(SongFile.loadBuyNameAndArtist(getBaseContext(), s[0], s[1]));
-                    try {
-                        MainActivity.getPlayer().playUserSongFromSave(6, getBaseContext(), SongFile.loadBuyIndex(getBaseContext(), 0, nameArtist));
-                    }catch(InterruptedException e){
-
-                    }
-                    /*
-                    MainActivity.setSongStuff(SongFile.loadBuyIndex(getBaseContext(),0,nameArtist));
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);*/
-                }
+                }else {
+                      try {
+                          MainActivity.getPlayer().playUserSongFromSave(6, getBaseContext(), SongFile.loadBuyIndex(getBaseContext(), 0, nameArtist));
+                      } catch (InterruptedException e) {
+                          e.printStackTrace();
+                      }
+                      try {
+                          MediaPlayer mp = new MediaPlayer();
+                          mp.setDataSource("/mnt/sdcard/audiorecorder.3gpp");
+                          mp.prepare();
+                          mp.start();
+                      } catch (Exception e) {
+                          e.printStackTrace();
+                      }
+                  }
               }
           });
         song2.setOnClickListener(new View.OnClickListener() {
@@ -137,9 +146,17 @@ public class Album extends ActionBarActivity {
 
     }
 
+    /*private void playRecording() throws Exception {
+        ditchMediaPlayer();
+        mediaPlayer = new MediaPlayer();
+        mediaPlayer.setDataSource(OUTPUT_FILE);
+        mediaPlayer.prepare();
+        mediaPlayer.start();
+    }*/
     public static void setNameArtist(String name){
         nameArtist = name;
     }
+    public static void setNameSong(String song) { nameSong = song; }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
