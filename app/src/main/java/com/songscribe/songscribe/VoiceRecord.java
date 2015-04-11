@@ -1,5 +1,6 @@
 package com.songscribe.songscribe;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
@@ -38,6 +39,7 @@ public class VoiceRecord extends ActionBarActivity {
 
         final Button record=(Button)findViewById(R.id.recordButton);
         final Button playback=(Button)findViewById(R.id.playbackButton);
+        final Button finalsave=(Button)findViewById(R.id.finalSave);
 
 
 
@@ -88,6 +90,17 @@ public class VoiceRecord extends ActionBarActivity {
                 }
                 isPlaying=changeState(isPlaying);
 
+            }
+        });
+
+        finalsave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                stopPlayback();
+                
+                Intent intent = new Intent(getApplicationContext(), SongSelection.class);
+                startActivity(intent);
             }
         });
 
@@ -156,6 +169,7 @@ public class VoiceRecord extends ActionBarActivity {
     private void stopRecording(){
         if(recorder != null)
             recorder.stop();
+        MainActivity.getPlayer().stopAll();
     }
     private void beginRecording() throws Exception{
         ditchMediaRecorder();
@@ -172,6 +186,11 @@ public class VoiceRecord extends ActionBarActivity {
         recorder.prepare();
         recorder.start();
 
+        try {
+            MainActivity.getPlayer().playUserSongFromSave(6, getBaseContext(), SongFile.loadBuyIndex(getBaseContext(), 0, nameArtist));
+        }catch(InterruptedException e){
+            e.printStackTrace();
+        }
     }
     private void ditchMediaRecorder(){
         if(recorder != null)

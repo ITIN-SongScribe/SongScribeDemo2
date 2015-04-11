@@ -59,9 +59,9 @@ public class Lyrics extends ActionBarActivity {
 
                 String testArtist = LoginScreen.getArtist();
 
-                String saveData = nameSong+","+saveDataT;
-                saveData+=SongFile.load(getBaseContext(),testArtist);
-                SongFile.save(getBaseContext(), saveData, testArtist);
+                String saveDataT2 = nameSong+","+saveDataT;
+                saveDataT2+=SongFile.load(getBaseContext(),testArtist);
+                SongFile.save(getBaseContext(), saveDataT2, testArtist);
 
                 //lyricsT = lyricsField.getText().toString();
                 // VoiceRecord.setLyricsT(lyrics);
@@ -70,7 +70,7 @@ public class Lyrics extends ActionBarActivity {
                 startActivity(intent);
                 */
 
-                Intent intent = new Intent(getApplicationContext(), Album.class);
+                Intent intent = new Intent(getApplicationContext(), VoiceRecord.class);
                 startActivity(intent);
             }
         });
