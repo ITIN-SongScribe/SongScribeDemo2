@@ -8,47 +8,51 @@
     android:id="@+id/main_activity"
     android:background="#5000b5ff">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/artist"
-        android:textSize="20sp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignBottom="@+id/imageButton"/>
 
-    <ImageButton
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:id="@+id/imageButton"
-        android:src="@drawable/samprofile"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_width="160dp"
         android:id="@+id/imageView2"
         android:src="@drawable/horizontal_logo"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/artist"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignTop="@+id/Logout"
+        android:layout_alignBottom="@+id/Logout" />
 
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:text="Logout"
+        android:id="@+id/Logout"
+        android:layout_marginTop="12dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentRight="true"
+        android:background="#5371d0f7"
+        android:textSize="15dp"
+        android:textColor="#FF004b6c" />
+
+<!--Song Name-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="&#34;@+id/txtsongName&#34;"
         android:id="@+id/textView"
         android:textSize="20sp"
         android:textColor="#ffffffff"
         android:textStyle="bold|italic"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/imageView2"
         android:layout_centerHorizontal="true" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/artist"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:layout_below="@id/textView"
+        android:layout_marginBottom="10dp"
+        android:textStyle="bold" />
+    <!--android:text="(Artist Name)"-->
     <Button
         android:layout_width="75dp"
         android:layout_height="75dp"
@@ -56,9 +60,9 @@
         android:id="@+id/button3"
         android:textSize="15sp"
         android:background="#7d064cff"
-        android:layout_below="@+id/textView"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView" />
+        android:layout_below="@+id/artist"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="50dp" />
 
     <Button
         android:layout_width="75dp"
@@ -68,8 +72,8 @@
         android:background="#7d064cff"
         android:textSize="15sp"
         android:layout_alignTop="@+id/button3"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView" />
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="50dp" />
 
     <Button
         android:layout_width="75dp"
@@ -78,7 +82,7 @@
         android:id="@+id/button5"
         android:background="#7d064cff"
         android:textSize="15sp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:layout_below="@+id/button3"
         android:layout_alignLeft="@+id/button3"
         android:layout_alignStart="@+id/button3" />
@@ -101,11 +105,10 @@
         android:text="Play"
         android:id="@+id/PLAY"
         android:textSize="10sp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:background="#7900ff0f"
-        android:layout_below="@+id/button6"
-        android:layout_alignLeft="@+id/button6"
-        android:layout_alignStart="@+id/button6" />
+        android:layout_below="@+id/button5"
+        android:layout_alignRight="@+id/button5" />
 
     <Button
         android:layout_width="50dp"
@@ -114,23 +117,18 @@
         android:id="@+id/button2"
         android:textSize="10sp"
         android:background="#ffff9883"
-        android:layout_alignBaseline="@+id/PLAY"
         android:layout_alignBottom="@+id/PLAY"
-        android:layout_alignRight="@+id/button5"
-        android:layout_alignEnd="@+id/button5" />
+        android:layout_alignLeft="@+id/button6"
+         />
 
     <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
         android:text="Save"
         android:id="@+id/SAVE"
         android:background="#7d064cff"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/imageButton"
-        android:layout_alignEnd="@+id/imageButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:textSize="20dp" />
 
 
 </RelativeLayout>

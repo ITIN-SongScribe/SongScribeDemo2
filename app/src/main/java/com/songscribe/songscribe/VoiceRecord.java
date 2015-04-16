@@ -41,9 +41,12 @@ public class VoiceRecord extends ActionBarActivity {
         final Button record=(Button)findViewById(R.id.recordButton);
         final Button playback=(Button)findViewById(R.id.playbackButton);
         final Button finalsave=(Button)findViewById(R.id.finalSave);
+        final Button logoutButton=(Button)findViewById(R.id.Logout);
 
         final TextView lyricsD = (TextView)findViewById(R.id.lDisplay);
         lyricsD.setText(lyrics);
+
+
 
 
 
@@ -104,6 +107,14 @@ public class VoiceRecord extends ActionBarActivity {
                 stopPlayback();
                 
                 Intent intent = new Intent(getApplicationContext(), SongSelection.class);
+                startActivity(intent);
+            }
+        });
+
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), LoginScreen.class);
                 startActivity(intent);
             }
         });

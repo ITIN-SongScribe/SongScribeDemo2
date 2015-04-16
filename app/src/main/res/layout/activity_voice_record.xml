@@ -9,34 +9,50 @@
 
 
 
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/artist"-->
+        <!--android:textSize="20sp"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_alignBottom="@+id/imageButton"/>-->
+
+
+    <ImageView
+        android:layout_height="wrap_content"
+        android:layout_width="160dp"
+        android:id="@+id/imageView2"
+        android:src="@drawable/horizontal_logo"
+        android:layout_alignTop="@+id/Logout"
+        android:layout_alignBottom="@+id/Logout" />
+
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:text="Logout"
+        android:id="@+id/Logout"
+        android:layout_marginTop="12dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentRight="true"
+        android:background="#5371d0f7"
+        android:textSize="15dp"
+        android:textColor="#FF004b6c" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/artist"
-        android:textSize="20sp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignBottom="@+id/imageButton"/>
-
-    <ImageButton
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:id="@+id/imageButton"
-        android:src="@drawable/samprofile"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:id="@+id/imageView2"
-        android:src="@drawable/horizontal_logo"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView4"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="35dp" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Record Lyrics Here!"
+        android:id="@+id/lyricsHeader"
+        android:textSize="20dp"
+        android:textColor="#ffffffff"
+        android:textStyle="bold|italic"
+        android:layout_below="@+id/Logout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textIsSelectable="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -44,11 +60,27 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@+id/txtsongName"
         android:id="@+id/textView4"
-        android:layout_marginTop="81dp"
-        android:textStyle="bold"
-        android:textColor="#ff004b6c"
-        android:layout_below="@+id/imageButton"
+        android:textSize="20dp"
+        android:textColor="#000000"
+        android:textStyle="bold|italic"
+        android:layout_below="@+id/lyricsHeader"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lyrics"
+        android:textSize="15dp"
+        android:id="@+id/lDisplay"
+        android:layout_below="@+id/textView4"
+        android:layout_above="@+id/playbackButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/finalSave"
+        android:layout_alignEnd="@+id/finalSave"
+        android:layout_marginTop="50dp"
+        android:scrollbars = "vertical"
+        android:layout_marginBottom="20dp" />
 
     <Button
         android:layout_width="80dp"
@@ -59,7 +91,8 @@
         android:textSize="15sp"
         android:textColor="#FF004b6c"
         android:clickable="true"
-        android:layout_alignTop="@+id/playbackButton" />
+        android:layout_alignTop="@+id/playbackButton"
+        android:layout_marginBottom="20dp" />
 
     <Button
         android:layout_width="90dp"
@@ -71,7 +104,8 @@
         android:textColor="#FF004b6c"
         android:clickable="true"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp" />
 
     <Button
         android:layout_width="80dp"
@@ -84,18 +118,9 @@
         android:clickable="true"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="20dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lyrics"
-        android:id="@+id/lDisplay"
-        android:layout_below="@+id/imageView2"
-        android:layout_above="@+id/playbackButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/finalSave"
-        android:layout_alignEnd="@+id/finalSave" />
+
 
 </RelativeLayout>

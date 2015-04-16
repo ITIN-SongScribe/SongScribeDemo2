@@ -43,6 +43,7 @@ public class MainActivity extends ActionBarActivity {
         final Button btnPlay=(Button)findViewById(R.id.PLAY);
         final Button btnStop=(Button)findViewById(R.id.button2);
         final Button save = (Button)findViewById(R.id.SAVE);
+        final Button logoutButton=(Button)findViewById(R.id.Logout);
 
 
         final TextView tvArtist = (TextView)findViewById(R.id.artist);
@@ -157,6 +158,13 @@ public class MainActivity extends ActionBarActivity {
 
         });
 
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), LoginScreen.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public static void setData(String dataTemp) { saveDataT = dataTemp; }

@@ -30,6 +30,7 @@ public class Lyrics extends ActionBarActivity {
         Button save = (Button) findViewById(R.id.userLogin);
         Button random = (Button) findViewById(R.id.rSongName);
         Button play = (Button) findViewById(R.id.playback);
+        final Button logoutButton=(Button)findViewById(R.id.Logout);
 
         final EditText song = (EditText) findViewById(R.id.songName);
         final EditText lyricsField = (EditText) findViewById(R.id.lyrics);
@@ -86,6 +87,14 @@ public class Lyrics extends ActionBarActivity {
                 */
 
                 Intent intent = new Intent(getApplicationContext(), VoiceRecord.class);
+                startActivity(intent);
+            }
+        });
+
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), LoginScreen.class);
                 startActivity(intent);
             }
         });
