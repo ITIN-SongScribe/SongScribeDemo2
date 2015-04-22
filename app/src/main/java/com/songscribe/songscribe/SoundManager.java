@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.songscribe.songscribe.util.LinkedList;
 
 
-public class SoundManager {
+public class SoundManager implements Runnable {
 
 
     //int[] soundsGuitar = {R.raw.guitar1, R.raw.guitar2, R.raw.guitar3};
@@ -52,6 +52,63 @@ public class SoundManager {
     static long duration = 0;
 
     static SoundPool p;
+
+    private static Thread thread;
+    private static boolean running;
+
+    public synchronized void start() {
+        running = true;
+        thread = new Thread(this, "Sound Manager");
+        thread.start();
+    }
+    public void run() {
+        long lastTime = System.nanoTime();
+        long lastTimer = System.currentTimeMillis();
+        double nsPerTick = 1000000000D / 60D;
+        double delta = 0;
+        int ticks = 0;
+        int frames = 0;
+        while (running) {
+
+            long now = System.nanoTime();
+            delta += (now - lastTime) / nsPerTick;
+            lastTime = now;
+            boolean shouldRender = true;
+
+            while (delta >= 1) {
+                ticks++;
+
+                delta -= 1;
+                shouldRender = true;
+            }
+            try {
+                Thread.sleep(2);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            if (shouldRender) {
+                frames++;
+
+            }
+            if (System.currentTimeMillis() - lastTimer >= 1000) {
+                lastTimer += 1000;
+                frames = 0;
+                ticks = 0;
+            }
+        }
+    }
+
+
+
+    public synchronized void stop() {
+        running = false;
+
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
     private static void preInit(Context c){
         populateBassList(c);
@@ -138,9 +195,8 @@ public class SoundManager {
 
 
     private static long getSoundDuration(Context c, int rawId){
-        MediaPlayer mplayer = MediaPlayer.create(c, rawId);
-        mplayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-        int d = mplayer.getDuration();
+
+        int d = 9;
         return d;
     }
 
@@ -282,26 +338,69 @@ public class SoundManager {
         stopUserSong();
         listPlaying.clear();
     }
+    private final long PERIOD = 9000; // Adjust to suit timing
+    private long lastTime = System.currentTimeMillis() - PERIOD;
 
-    public void playUserSong(Context c){
+    public void playUserSong(Context c,int loops){
+
         stopAll();
-        listPlaying.clear();
+        if(loops < 1)listPlaying.clear();
         listUserSong.clear();
 
         listUserSong.insertAtBack(listBass.get(indexBass));
         listUserSong.insertAtBack(listDrums.get(indexDrums));
         listUserSong.insertAtBack(listSong.get(indexSong));
-        int loops = 0;
+        //int loops = 0;
+        try{
+        listPlaying.insertAtBack(playSound(listUserSong.get(0), -1, -1, 0,c));
+        listPlaying.insertAtBack(playSound(listUserSong.get(1), -1, -1, 0,c));
+        listPlaying.insertAtBack(playSound(listUserSong.get(2), -1, -1, 0,c));
+
+            long lastTime = System.nanoTime();
+            long lastTimer = System.currentTimeMillis();
+            double nsPerTick = 1000000000D / 60D;
+            double delta = 0;
+            int next = 0;
+            while (next<9) {
+
+                long now = System.nanoTime();
+                delta += (now - lastTime) / nsPerTick;
+                lastTime = now;
+                boolean shouldRender = true;
+
+                while (delta >= 1) {
+                    delta -= 1;
+                }
+                try {
+                    Thread.sleep(2);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                if (System.currentTimeMillis() - lastTimer >= 990) {
+                    lastTimer += 990;
+                    next++;
+                }
+            }
+
+       //Thread.sleep(9000-1);
+        }catch(InterruptedException e){
+
+        }
+
+        //thread.sleep(9000);
+        if(loops > 0)playUserSong(c, loops-1);
+        /*
         for(int i =0; i < listUserSong.lengthIs(); i++){
 
 
             //if(i >= userSongArray.length-1) loops = 0;
             try{
-                listPlaying.insertAtBack(playSound(listUserSong.get(i), -1, -1, 0,c));
+                listPlaying.insertAtBack(playSound(listUserSong.get(i), -1, -1, loops,c));
             }catch(InterruptedException e){
 
             }
-        }
+        }*/
 
     }
 
