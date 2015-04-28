@@ -69,10 +69,10 @@ public class SongFile {
                 e.printStackTrace();
             }
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        numSongs = (loaded.split("\\|",MAX_SONGS).length)-1;
+    } catch (FileNotFoundException e) {
+        e.printStackTrace();
+    }
+    numSongs = (loaded.split("\\|",MAX_SONGS).length)-1;
 
         return loaded;
     }
