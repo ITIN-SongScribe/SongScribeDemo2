@@ -16,6 +16,7 @@ public class Album extends ActionBarActivity {
     Button song2;
     Button song3;
     Button song4;
+//    final Button logoutButton=(Button)findViewById(R.id.Logout);
     static String nameArtist;
     static String nameSong;
     @Override
@@ -38,6 +39,13 @@ public class Album extends ActionBarActivity {
         setUp();
         // final String txtAlbumArtist = txtArtist + "'s Album!";
 
+//        logoutButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getApplicationContext(), LoginScreen.class);
+//                startActivity(intent);
+//            }
+//        });
 
           song1.setOnClickListener(new View.OnClickListener() {
               @Override
@@ -135,6 +143,8 @@ startActivity(intent);*/
                 }
             }
         });
+
+
     }
     private void setUp(){
 
@@ -178,4 +188,6 @@ startActivity(intent);*/
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }

@@ -20,6 +20,7 @@ public class SongSelection extends ActionBarActivity {
         Button nsong = (Button) findViewById(R.id.nsong);
         final TextView load = (TextView)findViewById(R.id.LOAD);
         final TextView txtArtist = (TextView)findViewById(R.id.artist);
+        final Button logoutButton=(Button)findViewById(R.id.Logout);
         txtArtist.setText(nameArtist);
 
         nsong.setOnClickListener(new View.OnClickListener() {
@@ -38,6 +39,14 @@ public class SongSelection extends ActionBarActivity {
                 Intent intent = new Intent(getApplicationContext(),Album.class);
                 startActivity(intent);
 
+            }
+        });
+
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), LoginScreen.class);
+                startActivity(intent);
             }
         });
      }

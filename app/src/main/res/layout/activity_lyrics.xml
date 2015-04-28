@@ -11,28 +11,25 @@
     android:focusableInTouchMode="true">
 
 
+    <ImageView
+        android:layout_height="wrap_content"
+        android:layout_width="160dp"
+        android:id="@+id/imageView2"
+        android:src="@drawable/horizontal_logo"
+        android:layout_alignTop="@+id/Logout"
+        android:layout_alignBottom="@+id/Logout" />
+
     <Button
         android:layout_width="80dp"
         android:layout_height="40dp"
         android:text="Logout"
-        android:id="@+id/logout"
+        android:id="@+id/Logout"
         android:layout_marginTop="12dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentRight="true"
         android:background="#5371d0f7"
         android:textSize="15dp"
         android:textColor="#FF004b6c" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:id="@+id/imageView2"
-        android:src="@drawable/horizontal_logo"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/textView2"
-        android:layout_marginLeft="-125dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -43,7 +40,7 @@
         android:textColor="#ffffffff"
         android:textStyle="bold|italic"
         android:layout_marginTop="33dp"
-        android:layout_below="@+id/logout"
+        android:layout_below="@+id/Logout"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -82,7 +79,7 @@
         android:layout_below="@+id/songName"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-
+    <!--Old Comment-->
     <!--<ScrollView-->
     <!--android:layout_height="200dp"-->
     <!--android:layout_width="match_parent"-->
@@ -103,19 +100,20 @@
     <!--/>-->
     <!--</ScrollView>-->
 
-    <ScrollView
-        android:id="@+id/lyricsScroll"
-        android:layout_height="200dp"
-        android:layout_width="match_parent"
-        android:layout_below="@id/textView"
-        android:layout_marginTop="30dp">
 
-    </ScrollView>
+    <!--New Comment-->
+    <!--&lt;!&ndash;<ScrollView&ndash;&gt;-->
+        <!--android:id="@+id/lyricsScroll"-->
+        <!--android:layout_height="200dp"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_below="@id/textView"-->
+        <!--android:layout_marginTop="30dp">-->
+
+    <!--</ScrollView>-->
 
     <EditText
         android:id="@+id/lyrics"
         android:hint="Type up your lyrics here, or freestyle on the next page!"
-        android:inputType="textCapSentences"
         android:ems="10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -123,7 +121,10 @@
         android:textSize="18sp"
         android:layout_below="@+id/textView"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:maxHeight="140dp"
+        android:scrollbars="vertical"
+        android:inputType="textMultiLine"/>
 
     <Button
         android:layout_width="100dp"
@@ -133,9 +134,9 @@
         android:background="#5000b5ff"
         android:textSize="20dp"
         android:textColor="#FF004b6c"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@id/lyrics"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+         />
 
     <Button
         android:layout_width="100dp"
@@ -145,9 +146,8 @@
         android:background="#5000b5ff"
         android:textSize="20dp"
         android:textColor="#FF004b6c"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/textView"
-        android:layout_toEndOf="@+id/textView" />
+        android:layout_below="@id/lyrics"
+        android:layout_alignParentRight="true" />
 
 
 </RelativeLayout>

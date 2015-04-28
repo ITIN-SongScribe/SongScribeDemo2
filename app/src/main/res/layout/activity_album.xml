@@ -7,96 +7,92 @@
     tools:context="com.songscribe.songscribe.Album"
     android:background="#5000b5ff">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/artist"
-            android:textSize="20sp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignBottom="@+id/imageButton"/>
-
-        <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:id="@+id/imageButton"
-            android:src="@drawable/samprofile"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:id="@+id/imageView2"
-            android:src="@drawable/horizontal_logo"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="-40dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@+id/txtAlbumArtist"
-            android:id="@+id/artistname"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="175dp" />
-
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:text="New Song"
-            android:id="@+id/button3"
-            android:layout_marginRight="22dp"
-            android:layout_marginEnd="22dp"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/button4"
-            android:layout_toStartOf="@+id/button4"
-            android:background="#7d064cff"
-            android:textSize="15sp" />
-
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:text="New Song"
-            android:id="@+id/button4"
-            android:layout_alignTop="@+id/button3"
-            android:layout_toLeftOf="@+id/imageButton"
-            android:layout_toStartOf="@+id/imageButton"
-            android:layout_marginRight="30dp"
-            android:layout_marginEnd="30dp"
-            android:background="#7d064cff"
-            android:textSize="15sp" />
-
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:text="New Song"
-            android:id="@+id/button5"
-            android:layout_below="@+id/button3"
-            android:layout_alignLeft="@+id/button3"
-            android:layout_alignStart="@+id/button3"
-            android:layout_marginTop="28dp"
-            android:background="#7d064cff"
-            android:textSize="15sp" />
-
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:text="New Song"
-            android:id="@+id/SAVE"
-            android:layout_alignBaseline="@+id/button5"
-            android:layout_alignBottom="@+id/button5"
-            android:layout_alignLeft="@+id/button4"
-            android:layout_alignStart="@+id/button4"
-            android:background="#7d064cff"
-            android:textSize="15sp" />
 
 
+    <ImageView
+        android:layout_height="wrap_content"
+        android:layout_width="160dp"
+        android:id="@+id/imageView2"
+        android:src="@drawable/horizontal_logo"
+        android:layout_alignTop="@+id/Logout"
+        android:layout_alignBottom="@+id/Logout" />
 
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:text="Logout"
+        android:id="@+id/Logout"
+        android:layout_marginTop="12dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentRight="true"
+        android:background="#5371d0f7"
+        android:textSize="15dp"
+        android:textColor="#FF004b6c" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/artist"
+        android:layout_below="@id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffffff"
+        android:textSize="30dp"
+        android:textIsSelectable="true"
+        android:textStyle="bold|italic"
+        android:layout_marginTop="15dp" />
+    <!--android:text="Artist Name"-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@+id/txtAlbumArtist"
+        android:id="@+id/artistname"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/artist"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        />
+    <!--android:text="lkjasdefkj"-->
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:text="New Song"
+        android:id="@+id/button3"
+        android:layout_below="@id/artistname"
+        android:background="#7d064cff"
+        android:textSize="15sp"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:text="New Song"
+        android:id="@+id/button4"
+        android:layout_below="@id/button3"
+        android:background="#7d064cff"
+        android:textSize="15sp"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:text="New Song"
+        android:id="@+id/button5"
+        android:layout_below="@id/button4"
+        android:background="#7d064cff"
+        android:textSize="15sp"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:text="New Song"
+        android:id="@+id/SAVE"
+        android:layout_below="@id/button5"
+        android:background="#7d064cff"
+        android:textSize="15sp"
+        android:layout_marginBottom="10dp"/>
 
     </RelativeLayout>
