@@ -16,7 +16,7 @@ public class Lyrics extends ActionBarActivity {
 
     private static String songname = "Song Name";
     private static String saveDataT;
-    private static String rSong [] = new String[20];
+    private static String rSong [] = new String[40];
     private static String lyricsT = "Lyrics";
     static String nameArtist;
     static String nameSong;
@@ -40,7 +40,7 @@ public class Lyrics extends ActionBarActivity {
             public void onClick(View v) {
 
                 Random r = new Random();
-                int number = r.nextInt(20);
+                int number = r.nextInt(40);
 
                 song.setText(rSongArray(number));
 
@@ -122,6 +122,26 @@ public class Lyrics extends ActionBarActivity {
         rSong[17] = "Staying Dead";
         rSong[18] = "Living On A Dare";
         rSong[19] = "Hotel Nebraska";
+        rSong[20] = "Flank Space";
+        rSong[21] = "Light Horse";
+        rSong[22] = "Jo Jey";
+        rSong[23] = "Crying Without Wings";
+        rSong[24] = "Scabity";
+        rSong[25] = "Fry Me to the Moon";
+        rSong[26] = "Every Hose has it's Corn";
+        rSong[27] = "Be You Again";
+        rSong[28] = "Pile";
+        rSong[29] = "Butt Up and Dance";
+        rSong[30] = "Dear Future Diabetes";
+        rSong[31] = "Burned It";
+        rSong[32] = "Hey Drama";
+        rSong[33] = "My Songs Know What You Did in the Park";
+        rSong[34] = "Hallelujer";
+        rSong[35] = "Videoactive";
+        rSong[36] = "OctaDate";
+        rSong[37] = "Stains";
+        rSong[38] = "Boom Boom";
+        rSong[39] = "In a Honda";
 
 
         return rSong[num];

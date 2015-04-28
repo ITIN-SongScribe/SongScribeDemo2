@@ -91,8 +91,9 @@
         android:textSize="15sp"
         android:textColor="#FF004b6c"
         android:clickable="true"
-        android:layout_alignTop="@+id/playbackButton"
-        android:layout_marginBottom="20dp" />
+        android:layout_below="@+id/lDisplay"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="90dp"
@@ -103,13 +104,13 @@
         android:textSize="15sp"
         android:textColor="#FF004b6c"
         android:clickable="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp" />
+        android:layout_above="@+id/finalSave"
+        android:layout_alignRight="@+id/finalSave"
+        android:layout_alignEnd="@+id/finalSave" />
 
     <Button
         android:layout_width="80dp"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:text="SAVE"
         android:id="@+id/finalSave"
         android:background="#5000b5ff"
@@ -117,10 +118,23 @@
         android:textColor="#FF004b6c"
         android:clickable="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="20dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/Logout"
+        android:layout_alignEnd="@+id/Logout" />
 
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:text="STOP"
+        android:id="@+id/Stop"
+        android:background="#5000b5ff"
+        android:textSize="15sp"
+        android:textColor="#FF004b6c"
+        android:clickable="true"
+        android:layout_below="@+id/lDisplay"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/finalSave" />
 
 
 </RelativeLayout>

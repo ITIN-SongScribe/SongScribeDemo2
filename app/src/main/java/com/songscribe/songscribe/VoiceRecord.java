@@ -42,6 +42,7 @@ public class VoiceRecord extends ActionBarActivity {
         final Button playback=(Button)findViewById(R.id.playbackButton);
         final Button finalsave=(Button)findViewById(R.id.finalSave);
         final Button logoutButton=(Button)findViewById(R.id.Logout);
+        final Button stop=(Button)findViewById(R.id.Stop);
 
         final TextView lyricsD = (TextView)findViewById(R.id.lDisplay);
         lyricsD.setText(lyrics);
@@ -54,23 +55,12 @@ public class VoiceRecord extends ActionBarActivity {
             @Override
             public void onClick(View v) {
 
-                if (isRecording) {
-                    try {
-                        stopRecording();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    record.setText("Record!");
-                }
-                else {
-                    record.setText("Stop Recording");
+
                     try {
                         beginRecording();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                }
-                isRecording=changeState(isRecording);
 
             }
         });
@@ -79,23 +69,28 @@ public class VoiceRecord extends ActionBarActivity {
             @Override
             public void onClick(View v) {
 
-                if(isPlaying) {
-                    try {
-                        stopPlayback();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    playback.setText("Play");
-                }
-                else {
+
                     try {
                         playRecording();
                     }catch (Exception e) {
                         e.printStackTrace();
                     }
-                    playback.setText("Stop");
+
                 }
-                isPlaying=changeState(isPlaying);
+
+
+        });
+
+        stop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                try {
+                    stopRecording();
+                    stopPlayback();
+                }catch (Exception e) {
+                    e.printStackTrace();
+                }
 
             }
         });

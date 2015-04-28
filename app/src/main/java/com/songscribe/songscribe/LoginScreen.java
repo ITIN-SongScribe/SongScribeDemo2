@@ -18,7 +18,7 @@ public class LoginScreen extends ActionBarActivity {
     // TextView mText;
 
     private static String artist = "Artist";
-    private static String rName [] = new String[20];
+    private static String rName [] = new String[40];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class LoginScreen extends ActionBarActivity {
             public void onClick(View v) {
 
                 Random r = new Random();
-                int number = r.nextInt(20);
+                int number = r.nextInt(40);
 
                 user.setText(rNameArray(number));
 
@@ -83,6 +83,26 @@ public class LoginScreen extends ActionBarActivity {
         rName[17] = "Parry Overwood";
         rName[18] = "Think About Lizards";
         rName[19] = "Tim McBra";
+        rName[20] = "Britney Spores";
+        rName[21] = "Dumbledore";
+        rName[22] = "Ariana Venti";
+        rName[23] = "Deline Cion";
+        rName[24] = "60 Pents";
+        rName[25] = "Prick Jonas";
+        rName[26] = "Grumpy Cat";
+        rName[27] = "Magenta";
+        rName[28] = "Sara Pearielles";
+        rName[29] = "Payson McJazz";
+        rName[30] = "The Neverland Kid";
+        rName[31] = "Pelvis";
+        rName[32] = "Aerohead";
+        rName[33] = "Barak Obama feat. Hillary Clinton";
+        rName[34] = "The Doctor";
+        rName[35] = "Smelly Molding";
+        rName[36] = "Flesha";
+        rName[37] = "Lady";
+        rName[38] = "Mean Day";
+        rName[39] = "The Arachnids";
 
         return rName[num];
     }
