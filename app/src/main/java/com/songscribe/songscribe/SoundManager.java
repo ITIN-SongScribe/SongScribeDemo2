@@ -264,9 +264,7 @@ public class SoundManager implements Runnable {
             ////userSongArray[type] = loadedSound;
         }
 
-        if(loops > 0){
-            Thread.sleep(9000);
-        }
+
 
         return  p.play(loadedSound, 1, 1, 1, 0, 1);
     }
@@ -365,16 +363,16 @@ public class SoundManager implements Runnable {
         }
 
         //thread.sleep(9000);
-        if(loops > 0 && isPlaying()) {
+        if(loops > 0 && playing) {
             final Context c0 = c;
             final int lo = loops;
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    playUserSong(c0, lo-1);
+                  if(playing)playUserSong(c0, lo-1);
                 }
-            }, 9000);
+            }, 8000);
         }
 
         /*
