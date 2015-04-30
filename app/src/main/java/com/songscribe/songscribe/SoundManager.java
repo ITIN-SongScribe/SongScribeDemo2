@@ -5,6 +5,7 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Build;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -356,32 +357,7 @@ public class SoundManager implements Runnable {
         listPlaying.insertAtBack(playSound(listUserSong.get(1), -1, -1, 0,c));
         listPlaying.insertAtBack(playSound(listUserSong.get(2), -1, -1, 0,c));
 
-            long lastTime = System.nanoTime();
-            long lastTimer = System.currentTimeMillis();
-            double nsPerTick = 1000000000D / 60D;
-            double delta = 0;
-            int next = 0;
-            while (next<9) {
 
-                long now = System.nanoTime();
-                delta += (now - lastTime) / nsPerTick;
-                lastTime = now;
-                boolean shouldRender = true;
-
-                while (delta >= 1) {
-                    delta -= 1;
-                }
-                try {
-                    Thread.sleep(2);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-                if (System.currentTimeMillis() - lastTimer >= 990) {
-                    lastTimer += 990;
-                    next++;
-                }
-            }
 
        //Thread.sleep(9000-1);
         }catch(InterruptedException e){
@@ -389,7 +365,18 @@ public class SoundManager implements Runnable {
         }
 
         //thread.sleep(9000);
-        if(loops > 0)playUserSong(c, loops-1);
+        if(loops > 0 && isPlaying()) {
+            final Context c0 = c;
+            final int lo = loops;
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    playUserSong(c0, lo-1);
+                }
+            }, 9000);
+        }
+
         /*
         for(int i =0; i < listUserSong.lengthIs(); i++){
 
