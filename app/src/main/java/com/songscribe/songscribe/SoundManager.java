@@ -372,7 +372,7 @@ public class SoundManager implements Runnable {
                 public void run() {
                   if(playing)playUserSong(c0, lo-1);
                 }
-            }, 8000);
+            }, 5000);
         }
 
         /*
