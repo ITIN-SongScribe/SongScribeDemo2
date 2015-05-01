@@ -22,6 +22,7 @@ public class VoiceRecord extends ActionBarActivity {
     private String OUTPUT_FILE;
     static String nameArtist;
     static String lyrics;
+    static int index=0;
 
     static boolean isRecording = false;
     static boolean isPlaying = false;
@@ -31,12 +32,17 @@ public class VoiceRecord extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voice_record);
 
+        if (index<4)
+        index++;
+        else
+        index=1;
+
         final String nameSong;
         nameSong = Lyrics.getSongName();
         final TextView txtArtist = (TextView)findViewById(R.id.textView4);
         txtArtist.setText(nameSong);
 
-        OUTPUT_FILE= Environment.getExternalStorageDirectory()+"/audiorecorder.3gpp";
+        OUTPUT_FILE= Environment.getExternalStorageDirectory()+"/fSong"+index+".3gpp";
 
         final Button record=(Button)findViewById(R.id.recordButton);
         final Button playback=(Button)findViewById(R.id.playbackButton);
@@ -46,8 +52,6 @@ public class VoiceRecord extends ActionBarActivity {
 
         final TextView lyricsD = (TextView)findViewById(R.id.lDisplay);
         lyricsD.setText(lyrics);
-
-
 
 
 
@@ -103,6 +107,8 @@ public class VoiceRecord extends ActionBarActivity {
                 
                 Intent intent = new Intent(getApplicationContext(), SongSelection.class);
                 startActivity(intent);
+
+
             }
         });
 

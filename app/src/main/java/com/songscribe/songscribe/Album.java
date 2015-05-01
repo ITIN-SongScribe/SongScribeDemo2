@@ -19,6 +19,14 @@ public class Album extends ActionBarActivity {
 //    final Button logoutButton=(Button)findViewById(R.id.Logout);
     static String nameArtist;
     static String nameSong;
+    static String nameArtist1;
+    static String nameSong1;
+    static String nameArtist2;
+    static String nameSong2;
+    static String nameArtist3;
+    static String nameSong3;
+    static String nameArtist4;
+    static String nameSong4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +76,7 @@ startActivity(intent);*/
                       }*/
                       try {
                           MediaPlayer mp = new MediaPlayer();
-                          mp.setDataSource("/mnt/sdcard/audiorecorder.3gpp");
+                          mp.setDataSource("/mnt/sdcard/fSong1.3gpp");
                           mp.prepare();
                           mp.start();
                       } catch (Exception e) {
@@ -88,9 +96,12 @@ startActivity(intent);*/
                     //String[] s = song2.getText().toString().split("-");
                     //MainActivity.setSongStuff(SongFile.loadBuyNameAndArtist(getBaseContext(),s[0],s[1]));
                     try {
-                        MainActivity.getPlayer().playUserSongFromSave(6,getBaseContext(), SongFile.loadBuyIndex(getBaseContext(), 1, nameArtist));
-                    }catch(InterruptedException e){
-
+                        MediaPlayer mp = new MediaPlayer();
+                        mp.setDataSource("/mnt/sdcard/fSong2.3gpp");
+                        mp.prepare();
+                        mp.start();
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
                     /*
                     MainActivity.setSongStuff(SongFile.loadBuyIndex(getBaseContext(),1,nameArtist));
@@ -110,9 +121,12 @@ startActivity(intent);*/
                     //String[] s = song3.getText().toString().split("-");
                     //MainActivity.setSongStuff(SongFile.loadBuyNameAndArtist(getBaseContext(),s[0],s[1]));
                     try {
-                        MainActivity.getPlayer().playUserSongFromSave(6,getBaseContext(), SongFile.loadBuyIndex(getBaseContext(), 2, nameArtist));
-                    }catch(InterruptedException e){
-
+                        MediaPlayer mp = new MediaPlayer();
+                        mp.setDataSource("/mnt/sdcard/fSong3.3gpp");
+                        mp.prepare();
+                        mp.start();
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
                     /*
                     MainActivity.setSongStuff(SongFile.loadBuyIndex(getBaseContext(),2,nameArtist));
@@ -131,10 +145,13 @@ startActivity(intent);*/
                 }else{
                     //String[] s = song4.getText().toString().split("-");
                     //MainActivity.setSongStuff(SongFile.loadBuyNameAndArtist(getBaseContext(),s[0],s[1]));
-                    try{
-                        MainActivity.getPlayer().playUserSongFromSave(6,getBaseContext(),SongFile.loadBuyIndex(getBaseContext(),3,nameArtist));
-                    }catch(InterruptedException e){
-
+                    try {
+                        MediaPlayer mp = new MediaPlayer();
+                        mp.setDataSource("/mnt/sdcard/fSong4.3gpp");
+                        mp.prepare();
+                        mp.start();
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
                     /*
                     MainActivity.setSongStuff(SongFile.loadBuyIndex(getBaseContext(),3,nameArtist));
@@ -167,6 +184,25 @@ startActivity(intent);*/
         nameArtist = name;
     }
     public static void setNameSong(String song) { nameSong = song; }
+
+  /* public static void setNameArtist1(String name1){
+        nameArtist1 = name1;
+    }
+    public static void setNameSong1(String song1) { nameSong1 = song1; }
+    public static void setNameArtist2(String name2){
+        nameArtist2 = name2;
+    }
+    public static void setNameSong2(String song2) { nameSong2 = song2; }
+    public static void setNameArtist3(String name3){
+        nameArtist3 = name3;
+    }
+    public static void setNameSong3(String song3) { nameSong3 = song3; }
+    public static void setNameArtist4(String name4){
+        nameArtist4 = name4;
+    }
+    public static void setNameSong4(String song4) { nameSong4 = song4; }
+    */
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
