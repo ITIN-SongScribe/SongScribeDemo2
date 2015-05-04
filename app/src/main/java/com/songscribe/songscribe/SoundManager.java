@@ -14,9 +14,9 @@ public class SoundManager implements Runnable {
 
 
     //int[] soundsGuitar = {R.raw.guitar1, R.raw.guitar2, R.raw.guitar3};
-    static int[] soundsBass = {R.raw.bass1,R.raw.bass2,R.raw.bass3 /*R.raw.bass4,R.raw.bass5,R.raw.bass6,R.raw.bass7,R.raw.bass8*/};
-    static int[] soundsDrums = {R.raw.drum1,R.raw.drum2,R.raw.drum3 /*R.raw.drum4,R.raw.drum5,R.raw.drum6,R.raw.drum7,R.raw.drum8*/};
-    static int[] soundsSong = {R.raw.lead1,R.raw.lead2,R.raw.lead3 /*R.raw.lead4,R.raw.lead5,R.raw.lead6,R.raw.lead7,R.raw.lead8*/};
+    static int[] soundsBass = {R.raw.bass1,R.raw.bass2,R.raw.bass4,R.raw.bass5,R.raw.bass6,R.raw.bass8};
+    static int[] soundsDrums = {R.raw.drums1,R.raw.drums2,R.raw.drums3,R.raw.drums4,R.raw.drums5,R.raw.drums6,R.raw.drums7,R.raw.drums8};
+    static int[] soundsSong = {R.raw.lead1,R.raw.lead2,R.raw.lead3,R.raw.lead4,R.raw.lead5,R.raw.lead6,R.raw.lead8};
 
 
     static int indexBass = 0, indexDrums = 0,indexSong = 0;
