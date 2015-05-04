@@ -14,13 +14,13 @@ public class SoundManager implements Runnable {
 
 
     //int[] soundsGuitar = {R.raw.guitar1, R.raw.guitar2, R.raw.guitar3};
-    static int[] soundsBass = {R.raw.bass1,R.raw.bass2,R.raw.bass4,R.raw.bass5,R.raw.bass6,R.raw.bass8};
-    static int[] soundsDrums = {R.raw.drums1,R.raw.drums2,R.raw.drums3,R.raw.drums4,R.raw.drums5,R.raw.drums6,R.raw.drums7,R.raw.drums8};
-    static int[] soundsSong = {R.raw.lead1,R.raw.lead2,R.raw.lead3,R.raw.lead4,R.raw.lead5,R.raw.lead6,R.raw.lead8};
+    static int[] soundsBass = {R.raw.bass1,R.raw.bass2,R.raw.bass4,R.raw.bass5,R.raw.bass6,R.raw.bass8,R.raw.bass9,R.raw.bass10,R.raw.bass11,R.raw.bass12,R.raw.bass13,R.raw.bass14,R.raw.bass15};
+    static int[] soundsDrums = {R.raw.drums1,R.raw.drums2,R.raw.drums3,R.raw.drums4,R.raw.drums5,R.raw.drums6,R.raw.drums7,R.raw.drums8,R.raw.drums9,R.raw.drums10,R.raw.drums11,R.raw.drums12,R.raw.drums13,R.raw.drums14,R.raw.drums15};
+    static int[] soundsSong = {R.raw.lead1,R.raw.lead2,R.raw.lead3,R.raw.lead4,R.raw.lead5,R.raw.lead6,R.raw.lead8,R.raw.lead9,R.raw.lead10,R.raw.lead11,R.raw.lead12,R.raw.lead15};
+    static int[] soundsSynth = {R.raw.pad1,R.raw.pad2,R.raw.pad3,R.raw.pad4,R.raw.pad5,R.raw.pad7};
 
-
-    static int indexBass = 0, indexDrums = 0,indexSong = 0;
-    static int[][] soundsAll = {soundsDrums,soundsBass,soundsSong};
+    static int indexBass = 0, indexDrums = 0,indexSong = 0,indexSynth = 0;
+    static int[][] soundsAll = {soundsDrums,soundsBass,soundsSong,soundsSynth};
 
     //int[] playing = new int[1];
 
@@ -33,6 +33,7 @@ public class SoundManager implements Runnable {
     static LinkedList<Integer> listBass = new LinkedList<Integer>("Bass List");
     static LinkedList<Integer> listDrums = new LinkedList<Integer>("Drums List");
     static LinkedList<Integer> listSong = new LinkedList<Integer>("Song List");
+    static LinkedList<Integer> listSynth = new LinkedList<Integer>("Synth List");
     static LinkedList<Integer> listUserSong = new LinkedList<Integer>("User Song List");
 
 
@@ -45,6 +46,7 @@ public class SoundManager implements Runnable {
     static int setbass =0;
     static int setdrums=0;
     static int setsong=0;
+    static int setsynth=0;
 
 
     static boolean init = false;
@@ -113,6 +115,7 @@ public class SoundManager implements Runnable {
         populateBassList(c);
         populateDrumsList(c);
         populateSongList(c);
+        populateSynthList(c);
     }
     public static void populateBassList(Context c){
         listBass.clear();
@@ -152,6 +155,18 @@ public class SoundManager implements Runnable {
         listSong.insertAtBack(loadSound(c,soundsSong[1]));
         listSong.insertAtBack(loadSound(c,soundsSong[2]));*/
     }
+    public static void populateSynthList(Context c){
+        listSynth.clear();
+        int i = 0;
+        while(i < soundsSynth.length){
+            listSynth.insertAtBack(loadSound(c,soundsSynth[i]));
+            i++;
+        }
+
+        /*listBass.insertAtBack(loadSound(c,soundsBass[0]));
+        listBass.insertAtBack(loadSound(c,soundsBass[1]));
+        listBass.insertAtBack(loadSound(c,soundsBass[2]));*/
+    }
 
 
     public static boolean isPlaying(){
@@ -182,6 +197,7 @@ public class SoundManager implements Runnable {
             setbass = 0;
             setdrums = 0;
             setsong = 0;
+            setsynth = 0;
             init = true;
         }
 
@@ -189,6 +205,7 @@ public class SoundManager implements Runnable {
         listUserSong.insertAtBack(listBass.get(setbass));
         listUserSong.insertAtBack(listDrums.get(setdrums));
         listUserSong.insertAtBack(listSong.get(setsong));
+        listUserSong.insertAtBack(listSynth.get(setsynth));
     }
 
 
@@ -205,14 +222,15 @@ public class SoundManager implements Runnable {
         setbass = Integer.parseInt(s[2]);
         setdrums = Integer.parseInt(s[3]);
         setsong = Integer.parseInt(s[4]);
-
+        setsynth = Integer.parseInt(s[5]);
 
 
     }
-    public static void setAll(int b, int d, int s){
+    public static void setAll(int b, int d, int s, int y){
         setbass = b;
         setdrums = d;
         setsong = s;
+        setsynth = y;
     }
     public static void setBass(int b, int d, int s){
         setbass = b;
@@ -227,6 +245,11 @@ public class SoundManager implements Runnable {
 
         setsong = s;
     }
+    public static void setSynth(int b, int d, int s, int y){
+
+        setsynth = y;
+    }
+
 
 
     public static int getBass(){
@@ -241,6 +264,10 @@ public class SoundManager implements Runnable {
 
         return indexSong;
     }
+    public static int getSynth(){
+
+        return indexSynth;
+    }
 
 
     public static int lengthBass(){
@@ -251,6 +278,9 @@ public class SoundManager implements Runnable {
     }
     public static int lengthDrums(){
         return soundsDrums.length;
+    }
+    public static int lengthSynth(){
+        return soundsSynth.length;
     }
     public static int playSound(int loadedSound, int type, int index, int loops, Context c) throws InterruptedException {
         //listUserSong.clear();
@@ -315,6 +345,22 @@ public class SoundManager implements Runnable {
         return indexSong+1;
 
     }
+    public static int buttonSynth(Context c){
+        if(indexSynth >= lengthSynth()-1)indexSynth=0;
+        else indexSynth++;
+
+        stopAll();
+        listPlaying.clear();
+        if(listSynth.isEmpty()) populateSynthList(c);
+        try {
+            listPlaying.insertAtBack(playSound(listSynth.get(indexSynth), 1, indexSynth, 0,c));
+        }
+        catch(InterruptedException e){
+
+        }
+        return indexSynth+1;
+
+    }
 
 
 
@@ -347,11 +393,13 @@ public class SoundManager implements Runnable {
         listUserSong.insertAtBack(listBass.get(indexBass));
         listUserSong.insertAtBack(listDrums.get(indexDrums));
         listUserSong.insertAtBack(listSong.get(indexSong));
+        listUserSong.insertAtBack(listSynth.get(indexSynth));
         //int loops = 0;
         try{
         listPlaying.insertAtBack(playSound(listUserSong.get(0), -1, -1, 0,c));
         listPlaying.insertAtBack(playSound(listUserSong.get(1), -1, -1, 0,c));
         listPlaying.insertAtBack(playSound(listUserSong.get(2), -1, -1, 0,c));
+        listPlaying.insertAtBack(playSound(listUserSong.get(3), -1, -1, 0,c));
 
 
 
@@ -396,6 +444,7 @@ public class SoundManager implements Runnable {
         listUserSong.insertAtBack(listBass.get(Integer.parseInt(s[2])));
         listUserSong.insertAtBack(listDrums.get(Integer.parseInt(s[3])));
         listUserSong.insertAtBack(listSong.get(Integer.parseInt(s[4])));
+        listUserSong.insertAtBack(listSynth.get(Integer.parseInt(s[5])));
 
 
             for (int i = 0; i < listUserSong.lengthIs(); i++) {

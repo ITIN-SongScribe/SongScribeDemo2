@@ -19,7 +19,7 @@ public class SongFile {
     private static String theFile;
     static int data_block = 100;
     private static int numSongs = 0;
-    private static final int SONG_INFO = 5;
+    private static final int SONG_INFO = 6;
     private static final int MAX_SONGS = 4;
 
     public static void save(Context c, String saveData, String curArt){

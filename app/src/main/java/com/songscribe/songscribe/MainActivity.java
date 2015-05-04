@@ -29,7 +29,7 @@ public class MainActivity extends ActionBarActivity {
         //sm = new SoundManager(this, 1);
 
         if(!init){
-            player.setAll(0,0,0);
+            player.setAll(0,0,0,0);
             nameArtist = LoginScreen.getArtist();
             nameSong = NewSongScreen.getSongName();
             player = new SoundManager(getBaseContext());
@@ -105,14 +105,12 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-        /*
         btnMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btnLead.setText("Lead: "+player.buttonLead(getBaseContext()));
+                btnMore.setText("Synth: "+player.buttonSynth(getBaseContext()));
             }
         });
-        */
 
 
 
@@ -147,7 +145,7 @@ public class MainActivity extends ActionBarActivity {
 
                 String testArtist = LoginScreen.getArtist();
 
-                String saveDataTemp = testArtist+","+player.getBass()+","+player.getDrums()+","+player.getLead()+"|";
+                String saveDataTemp = testArtist+","+player.getBass()+","+player.getDrums()+","+player.getLead()+player.getSynth()+","+"|";
                 saveDataTemp+=SongFile.load(getBaseContext(),testArtist);
                 SongFile.save(getBaseContext(), saveDataTemp, testArtist);
                 setData(saveDataTemp);
