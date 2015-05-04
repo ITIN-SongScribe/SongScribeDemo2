@@ -90,7 +90,7 @@
     <Button
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:text="More: 1"
+        android:text="Synth: 1"
         android:id="@+id/button6"
         android:background="#7d064cff"
         android:textSize="15sp"
