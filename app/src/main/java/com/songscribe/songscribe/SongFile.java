@@ -89,7 +89,7 @@ public class SongFile {
             String[] oneSong = allSongs[i].split(",",SONG_INFO);
             if(name.equalsIgnoreCase(oneSong[0]) && artist.equalsIgnoreCase(oneSong[1])) return oneSong;
         }
-        return new String[]{"Default", "Dev","1","1","1"};
+        return new String[]{"Default", "Dev","1","1","1","1"};
     }
 
     public static String[] loadBuyIndex(Context c, int index, String curArt){
@@ -103,7 +103,7 @@ public class SongFile {
         if(i > (allSongs.length-1)) return "Empty";
         String[] oneSong = allSongs[i].split(",",SONG_INFO);
         if(oneSong.length < 2) return "Empty";
-        return oneSong[0]+"-"+oneSong[1];
+        return oneSong[0]+"-"+curArt;
     }
 
     private static boolean isFull(){

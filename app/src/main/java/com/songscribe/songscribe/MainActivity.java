@@ -145,7 +145,7 @@ public class MainActivity extends ActionBarActivity {
 
                 String testArtist = LoginScreen.getArtist();
 
-                String saveDataTemp = testArtist+","+player.getBass()+","+player.getDrums()+","+player.getLead()+player.getSynth()+","+"|";
+                String saveDataTemp = testArtist+","+player.getBass()+","+player.getDrums()+","+player.getLead()+","+player.getSynth()+"|";
                 saveDataTemp+=SongFile.load(getBaseContext(),testArtist);
                 SongFile.save(getBaseContext(), saveDataTemp, testArtist);
                 setData(saveDataTemp);

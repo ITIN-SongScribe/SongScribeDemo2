@@ -61,7 +61,9 @@ public class VoiceRecord extends ActionBarActivity {
 
 
                     try {
+                        SoundManager.playUserSong(getBaseContext(),3);
                         beginRecording();
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -202,11 +204,8 @@ public class VoiceRecord extends ActionBarActivity {
         recorder.prepare();
         recorder.start();
 
-        try {
-            MainActivity.getPlayer().playUserSongFromSave(6, getBaseContext(), SongFile.loadBuyIndex(getBaseContext(), 0, nameArtist));
-        }catch(InterruptedException e){
-            e.printStackTrace();
-        }
+            SoundManager.playUserSong(getBaseContext(),3);
+
     }
     private void ditchMediaRecorder(){
         if(recorder != null)

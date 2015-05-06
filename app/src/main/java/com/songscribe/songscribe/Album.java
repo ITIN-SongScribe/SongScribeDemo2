@@ -79,6 +79,7 @@ startActivity(intent);*/
                           mp.setDataSource("/mnt/sdcard/fSong1.3gpp");
                           mp.prepare();
                           mp.start();
+
                       } catch (Exception e) {
                           e.printStackTrace();
                       }
@@ -100,6 +101,7 @@ startActivity(intent);*/
                         mp.setDataSource("/mnt/sdcard/fSong2.3gpp");
                         mp.prepare();
                         mp.start();
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -125,6 +127,7 @@ startActivity(intent);*/
                         mp.setDataSource("/mnt/sdcard/fSong3.3gpp");
                         mp.prepare();
                         mp.start();
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -150,6 +153,7 @@ startActivity(intent);*/
                         mp.setDataSource("/mnt/sdcard/fSong4.3gpp");
                         mp.prepare();
                         mp.start();
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
