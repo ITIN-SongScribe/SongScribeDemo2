@@ -386,7 +386,7 @@ public class SoundManager implements Runnable {
 
     public static void playUserSong(Context c,int loops){
 
-        stopAll();
+
         if(loops < 1)listPlaying.clear();
         listUserSong.clear();
 
@@ -418,7 +418,7 @@ public class SoundManager implements Runnable {
                 public void run() {
                   if(playing)playUserSong(c0, lo-1);
                 }
-            }, 8000);
+            }, 6500);
         }
 
         /*
@@ -442,6 +442,7 @@ public class SoundManager implements Runnable {
         indexSong=  Integer.parseInt(s[4]);
         indexSynth= Integer.parseInt(s[5]);
 
+        stopAll();
         playUserSong(c,loops);
 
      /*   stopAll();

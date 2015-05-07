@@ -77,6 +77,7 @@ public class MainActivity extends ActionBarActivity {
                     player.setPlaying(true);
                     btnPlay.setText("Play");
                 int loops = 5;
+                player.stopAll();
                     player.playUserSong(getBaseContext(),loops);
                     //loopSong = true;
               //  }

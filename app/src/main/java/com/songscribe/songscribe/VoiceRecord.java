@@ -61,6 +61,7 @@ public class VoiceRecord extends ActionBarActivity {
 
 
                     try {
+                        SoundManager.stopAll();
                         SoundManager.playUserSong(getBaseContext(),3);
                         beginRecording();
 
@@ -204,7 +205,7 @@ public class VoiceRecord extends ActionBarActivity {
         recorder.prepare();
         recorder.start();
 
-            SoundManager.playUserSong(getBaseContext(),3);
+            //SoundManager.playUserSong(getBaseContext(),3);
 
     }
     private void ditchMediaRecorder(){
