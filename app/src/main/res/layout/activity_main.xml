@@ -59,50 +59,54 @@
         android:text="Bass: 1"
         android:id="@+id/button3"
         android:textSize="15sp"
-        android:background="#7d064cff"
+        android:background="@drawable/onclick_bass"
         android:layout_below="@+id/artist"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="50dp" />
+        android:layout_marginLeft="50dp"
+        android:textColor="#fffffeee" />
 
     <Button
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:text="Drum: 1"
         android:id="@+id/button4"
-        android:background="#7d064cff"
+        android:background="@drawable/onclick_drums"
         android:textSize="15sp"
         android:layout_alignTop="@+id/button3"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="50dp" />
+        android:layout_marginRight="50dp"
+        android:textColor="#ffffffff" />
 
     <Button
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:text="Lead: 1"
         android:id="@+id/button5"
-        android:background="#7d064cff"
+        android:background="@drawable/onclick_lead"
         android:textSize="15sp"
         android:layout_marginTop="30dp"
         android:layout_below="@+id/button3"
         android:layout_alignLeft="@+id/button3"
-        android:layout_alignStart="@+id/button3" />
+        android:layout_alignStart="@+id/button3"
+        android:textColor="#ffffffff" />
 
     <Button
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:text="Synth: 1"
         android:id="@+id/button6"
-        android:background="#7d064cff"
+        android:background="@drawable/onclick_synth"
         android:textSize="15sp"
         android:layout_alignTop="@+id/button5"
         android:layout_alignLeft="@+id/button4"
-        android:layout_alignStart="@+id/button4" />
+        android:layout_alignStart="@+id/button4"
+        android:textColor="#ffffffff" />
 
 
     <Button
         android:layout_width="50dp"
-        android:layout_height="30dp"
-        android:text="Play"
+        android:layout_height="50dp"
+        android:text="Play All"
         android:id="@+id/PLAY"
         android:textSize="10sp"
         android:layout_marginTop="20dp"
@@ -112,7 +116,7 @@
 
     <Button
         android:layout_width="50dp"
-        android:layout_height="30dp"
+        android:layout_height="50dp"
         android:text="Stop"
         android:id="@+id/button2"
         android:textSize="10sp"
